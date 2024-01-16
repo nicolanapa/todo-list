@@ -1,19 +1,30 @@
-function dateChecker() {
+//function dateChecker() {
     let todayDate = new Date();
-    if ( todayDate.getMonth <= 9 ) {
-
+    if ( todayDate.getMonth() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+        console.log(todayDate);
     }
-    todayDate = todayDate.getFullYear() + "-" +  (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
-    console.log(todayDate);
+    else if ( todayDate.getDate() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+        console.log(todayDate);
     }
-
-dateChecker();
+    else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+        console.log(todayDate);
+    }
+    else {
+        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+        console.log(todayDate);
+    }
+    todayDate = todayDate.toString();
+    //return todayDate;
+//}
+//dateChecker();
 
 function addFormDOM() {
     let formContainer = document.querySelector("#form-container");
     /*
     //this.checklist = checklist;
-    this.dueDate = dueDate;
     this.priority = priority; // 1 a 5 - blu, rosso, verde, giallo, azzurro 
     this.projectName = projectName;
     */
@@ -69,7 +80,7 @@ function addFormDOM() {
     
     formStesso.appendChild(checkListLabel);
     formStesso.appendChild(checkListInput);*/
-    //DUEDATE | date
+    // DUEDATE | date
     let dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "ToDo da completare entro:"
     let dueDateInput = document.createElement("input");
@@ -83,7 +94,20 @@ function addFormDOM() {
 
     formStesso.appendChild(dueDateLabel);
     formStesso.appendChild(dueDateInput);
-    //
+    // PRIORITY
+    let priorityLabel = document.createElement("label");
+    priorityLabel.textContent = "Priorità ToDo (1 a 5):"
+    let priorityInput = document.createElement("input");
+    priorityLabel.setAttribute("for", "priority");
+    priorityInput.setAttribute("type", "//"); // Menù a tendina o radio buttons
+    priorityInput.setAttribute("id", "priority");
+    priorityInput.setAttribute("name", "priority");
+    priorityInput.setAttribute("placeholder", "1/2/3/4/5");
+
+    formStesso.appendChild(priorityLabel);
+    formStesso.appendChild(priorityInput);
+    // PROJECTNAME
+    
 }
 
 export { addFormDOM };
