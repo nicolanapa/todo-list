@@ -1,5 +1,5 @@
 import "./style.css";
-import { myToDo, ToDo } from "./todoProject";
+import { myToDo, ToDo, Project, projectNameArray } from "./todoProject";
 import { addFormDOM } from "./form";
 //console.log(new ToDo("dd", "s", "s", 1));
 
@@ -7,5 +7,5 @@ import { addFormDOM } from "./form";
 
 //myToDo[length] = "info";
 //console.log(myToDo[0]);
-addFormDOM();
+addFormDOM(projectNameArray);
 console.log(addFormDOM);

@@ -21,7 +21,17 @@
 //}
 //dateChecker();
 
-function addFormDOM() {
+function addFormButton() {
+    let formContainer = document.querySelector("#form-container");
+    let formShowButton = document.createElement("button");
+    formShowButton.textContent = "Crea un nuovo ToDo";
+    formShowButton.setAttribute("id", "formShowButton");
+    formContainer.appendChild(formShowButton);
+}
+
+addFormButton();
+
+function addFormDOM(projectNameArray) {
     let formContainer = document.querySelector("#form-container");
     /*
     //this.checklist = checklist;
@@ -80,6 +90,7 @@ function addFormDOM() {
     
     formStesso.appendChild(checkListLabel);
     formStesso.appendChild(checkListInput);*/
+    // eventListener for creating new "cheklists"
     // DUEDATE | date
     let dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "ToDo da completare entro:"
@@ -96,10 +107,12 @@ function addFormDOM() {
     formStesso.appendChild(dueDateInput);
     // PRIORITY
     let priorityLabel = document.createElement("label");
-    priorityLabel.textContent = "Priorità ToDo (1 a 5):"
+    priorityLabel.textContent = "Priorità ToDo (1 a 5) (1 = più priorità, 5 = meno priorità):"
     let priorityInput = document.createElement("input");
     priorityLabel.setAttribute("for", "priority");
-    priorityInput.setAttribute("type", "//"); // Menù a tendina o radio buttons
+    priorityInput.setAttribute("type", "range");
+    priorityInput.setAttribute("min", "1");
+    priorityInput.setAttribute("max", "5");
     priorityInput.setAttribute("id", "priority");
     priorityInput.setAttribute("name", "priority");
     priorityInput.setAttribute("placeholder", "1/2/3/4/5");
@@ -107,7 +120,26 @@ function addFormDOM() {
     formStesso.appendChild(priorityLabel);
     formStesso.appendChild(priorityInput);
     // PROJECTNAME
-    
+    //menù a tendina che mostra con un for each tutti i progetti esistenti;
+    let projectNameLabel = document.createElement("label");
+    projectNameLabel.textContent = "Scegli il progetto del ToDo:"
+    let projectNameSelect = document.createElement("select");
+    projectNameLabel.setAttribute("for", "notes");//
+    projectNameSelect.setAttribute("id", "projectName");
+    projectNameSelect.setAttribute("name", "projectName");
+
+    formStesso.appendChild(projectNameLabel);
+    formStesso.appendChild(projectNameSelect);
+    // PROJECTNAME Option loop
+    console.log(projectNameArray.length);
+    for ( let i = 0; i < projectNameArray.length; i++  ) {
+        let projectNameOption = document.createElement("option");
+        projectNameOption.setAttribute("value", projectNameArray[i]);
+        projectNameOption.textContent = projectNameArray[i];
+        projectNameSelect.appendChild(projectNameOption);
+        console.log(projectNameOption);
+    }
+    //
 }
 
 export { addFormDOM };
