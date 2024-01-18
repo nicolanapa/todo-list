@@ -7,5 +7,6 @@ import { addFormDOM } from "./form";
 
 //myToDo[length] = "info";
 //console.log(myToDo[0]);
+
 addFormDOM(projectNameArray);
-console.log(addFormDOM);
+//console.log(addFormDOM);

@@ -35,13 +35,12 @@ function addFormDOM(projectNameArray) {
     let formContainer = document.querySelector("#form-container");
     /*
     //this.checklist = checklist;
-    this.priority = priority; // 1 a 5 - blu, rosso, verde, giallo, azzurro 
-    this.projectName = projectName;
     */
     let formStesso = document.createElement("form");
     formStesso.setAttribute("method", "post");
     formStesso.setAttribute("action", "#");
     formContainer.appendChild(formStesso);
+
     // TITOLO
     let titleLabel = document.createElement("label");
     titleLabel.textContent = "Titolo ToDo:"
@@ -54,6 +53,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(titleLabel);
     formStesso.appendChild(titleInput);
+
     // DESCRIZIONE
     let descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Descrizione generale del ToDo:"
@@ -66,6 +66,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(descriptionLabel);
     formStesso.appendChild(descriptionInput);
+
     // NOTE
     let notesLabel = document.createElement("label");
     notesLabel.textContent = "Note aggiuntive del ToDo:"
@@ -78,6 +79,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(notesLabel);
     formStesso.appendChild(notesInput);
+
     // CHECKLIST | checkbox
     /*let checkListLabel = document.createElement("label");
     checkListLabel.textContent = "Note aggiuntive del ToDo:"
@@ -91,6 +93,7 @@ function addFormDOM(projectNameArray) {
     formStesso.appendChild(checkListLabel);
     formStesso.appendChild(checkListInput);*/
     // eventListener for creating new "cheklists"
+
     // DUEDATE | date
     let dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "ToDo da completare entro:"
@@ -105,6 +108,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(dueDateLabel);
     formStesso.appendChild(dueDateInput);
+
     // PRIORITY
     let priorityLabel = document.createElement("label");
     priorityLabel.textContent = "Priorità ToDo (1 a 5) (1 = più priorità, 5 = meno priorità):"
@@ -119,6 +123,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(priorityLabel);
     formStesso.appendChild(priorityInput);
+
     // PROJECTNAME
     //menù a tendina che mostra con un for each tutti i progetti esistenti;
     let projectNameLabel = document.createElement("label");
@@ -130,6 +135,7 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(projectNameLabel);
     formStesso.appendChild(projectNameSelect);
+
     // PROJECTNAME Option loop
     console.log(projectNameArray.length);
     for ( let i = 0; i < projectNameArray.length; i++  ) {
@@ -139,6 +145,7 @@ function addFormDOM(projectNameArray) {
         projectNameSelect.appendChild(projectNameOption);
         console.log(projectNameOption);
     }
+
     //
 }
 
