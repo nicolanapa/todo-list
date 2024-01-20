@@ -1,45 +1,41 @@
-//function dateChecker() {
-let todayDate = new Date();
-if ( todayDate.getMonth() <= 9 ) {
-    todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
-    console.log("Oggi è il " + todayDate);
-}
-else if ( todayDate.getDate() <= 9 ) {
-    todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
-    console.log("Oggi è il " + todayDate);
-}
-else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
-    todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
-    console.log("Oggi è il " + todayDate);
-}
-else {
-    todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
-    console.log("Oggi è il " + todayDate);
-}
-todayDate = todayDate.toString();
-//return todayDate;
-//}
-//dateChecker();
+import { projectNameArray } from "./todoProject";
 
-function addFormButton() {
-    let formContainer = document.querySelector("#form-container");
-    let formShowButton = document.createElement("button");
-    formShowButton.textContent = "Crea un nuovo ToDo";
-    formShowButton.setAttribute("id", "formShowButton");
-    formContainer.appendChild(formShowButton);
+function dateChecker() { // Creates an variable with today's date
+    let todayDate = new Date();
+    if ( todayDate.getMonth() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+        console.log("Oggi è il " + todayDate);
+    }
+    else if ( todayDate.getDate() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+        console.log("Oggi è il " + todayDate);
+    }
+    else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+        console.log("Oggi è il " + todayDate);
+    }
+    else {
+        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+        console.log("Oggi è il " + todayDate);
+    }
+    todayDate = todayDate.toString();
+    return todayDate;
 }
-
-addFormButton();
 
 function addFormDOM(projectNameArray) {
     let formContainer = document.querySelector("#form-container");
+
     /* cose che mancano
     //this.checklist = checklist;
     */
+
+    let dialogFormContainer = document.createElement("dialog");
+    dialogFormContainer.setAttribute("id", "dialog-form");
     let formStesso = document.createElement("form");
-    formStesso.setAttribute("method", "post");
+    formStesso.setAttribute("method", "dialog");
     formStesso.setAttribute("action", "#");
-    formContainer.appendChild(formStesso);
+    formContainer.appendChild(dialogFormContainer);
+    dialogFormContainer.appendChild(formStesso);
 
     // TITOLO
     let titleLabel = document.createElement("label");
@@ -104,7 +100,7 @@ function addFormDOM(projectNameArray) {
     dueDateInput.setAttribute("max", "2099-12-31");
     dueDateInput.setAttribute("id", "notes");
     dueDateInput.setAttribute("name", "notes");
-    dueDateInput.setAttribute("value", todayDate);
+    dueDateInput.setAttribute("value", dateChecker());
 
     formStesso.appendChild(dueDateLabel);
     formStesso.appendChild(dueDateInput);
@@ -144,6 +140,29 @@ function addFormDOM(projectNameArray) {
         projectNameSelect.appendChild(projectNameOption);
         console.log(projectNameOption);
     }
+
+    // Submit Button
+    let submitButton = document.createElement("button");
+    submitButton.setAttribute("id", "submitButton");
+    submitButton.setAttribute("type", "submit");
+    submitButton.textContent = "Salva";
+
+    formStesso.appendChild(submitButton);
+
+    // Shows the form after clicking the form button
+    formShowButton.addEventListener("click", () => {
+            dialogFormContainer.showModal();
+    });
+    
 }
+function addShowFormButton() {
+    let formContainer = document.querySelector("#form-container");
+    let formShowButton = document.createElement("button");
+    formShowButton.textContent = "Crea un nuovo ToDo";
+    formShowButton.setAttribute("id", "formShowButton");
+    formContainer.appendChild(formShowButton); 
+}
+addShowFormButton();
+addFormDOM(projectNameArray);
 
 export { addFormDOM };
