@@ -46,6 +46,7 @@ function addFormDOM(projectNameArray) {
     titleInput.setAttribute("id", "title");
     titleInput.setAttribute("name", "title");
     titleInput.setAttribute("placeholder", "Working");
+    titleInput.setAttribute("value", "Working");//DA CANCELLARE
 
     formStesso.appendChild(titleLabel);
     formStesso.appendChild(titleInput);
@@ -59,6 +60,7 @@ function addFormDOM(projectNameArray) {
     descriptionInput.setAttribute("id", "description");
     descriptionInput.setAttribute("name", "description");
     descriptionInput.setAttribute("placeholder", "Go to work on x and y");
+    descriptionInput.setAttribute("value", "Go to work on x and y");//DA CANCELLARE
 
     formStesso.appendChild(descriptionLabel);
     formStesso.appendChild(descriptionInput);
@@ -72,6 +74,7 @@ function addFormDOM(projectNameArray) {
     notesInput.setAttribute("id", "notes");
     notesInput.setAttribute("name", "notes");
     notesInput.setAttribute("placeholder", "Don't forget z");
+    notesInput.setAttribute("value", "Don't forget z");//DA CANCELLARE
 
     formStesso.appendChild(notesLabel);
     formStesso.appendChild(notesInput);
@@ -94,13 +97,13 @@ function addFormDOM(projectNameArray) {
     let dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "ToDo da completare entro:"
     let dueDateInput = document.createElement("input");
-    dueDateLabel.setAttribute("for", "notes");
+    dueDateLabel.setAttribute("for", "dueDate");
     dueDateInput.setAttribute("type", "date");
     dueDateInput.setAttribute("min", "2000-01-01")
     dueDateInput.setAttribute("max", "2099-12-31");
-    dueDateInput.setAttribute("id", "notes");
-    dueDateInput.setAttribute("name", "notes");
-    dueDateInput.setAttribute("value", dateChecker());
+    dueDateInput.setAttribute("id", "dueDate");
+    dueDateInput.setAttribute("name", "dueDate");
+    dueDateInput.setAttribute("value", dateChecker());//DEFAULT: TODAY
 
     formStesso.appendChild(dueDateLabel);
     formStesso.appendChild(dueDateInput);
@@ -116,9 +119,25 @@ function addFormDOM(projectNameArray) {
     priorityInput.setAttribute("id", "priority");
     priorityInput.setAttribute("name", "priority");
     priorityInput.setAttribute("placeholder", "1/2/3/4/5");
+    priorityInput.setAttribute("value", "1");//DA CANCELLARE, forse
 
     formStesso.appendChild(priorityLabel);
     formStesso.appendChild(priorityInput);
+
+    priorityInput.addEventListener("input", () => {
+    //if ( priorityInput.value == 1 ) {
+        //document.getElementById(priority).style.accentColor = "blue";
+        console.log(priorityInput.value);
+    //}
+    //else if ( priorityInput.value == 2 ) {
+        //document.getElementById(priority).style.accentColor = "#6495ed";
+
+    //}    
+    //else {
+        //document.getElementById(priority).style.accentColor = "red";
+
+    //}
+    });
 
     // PROJECTNAME Select creation
     let projectNameLabel = document.createElement("label");
@@ -151,10 +170,15 @@ function addFormDOM(projectNameArray) {
 
     // Shows the form after clicking the form button
     formShowButton.addEventListener("click", () => {
-            dialogFormContainer.showModal();
+        dialogFormContainer.showModal();
     });
     
+    // Get all form values by calling getFormValue()
+    submitButton.addEventListener("click", () => {
+        getFormValue();
+    });
 }
+
 function addShowFormButton() {
     let formContainer = document.querySelector("#form-container");
     let formShowButton = document.createElement("button");
@@ -162,6 +186,18 @@ function addShowFormButton() {
     formShowButton.setAttribute("id", "formShowButton");
     formContainer.appendChild(formShowButton); 
 }
+
+function getFormValue() {
+    let ToDoTitle = document.getElementById("title").value;
+    let ToDoDescription = document.getElementById("description").value;
+    let ToDoNotes = document.getElementById("notes").value;
+    let ToDoDueDate = document.getElementById("dueDate").value;
+    let ToDoPriority = document.getElementById("priority").value;
+    let ToDoProjectName = document.getElementById("projectName").value;
+
+    let newToDo = new ToDo()
+}
+
 addShowFormButton();
 addFormDOM(projectNameArray);
 

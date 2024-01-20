@@ -8,7 +8,7 @@ class ToDo { //CREA IL TODO E BASTA
         this.notes = notes;
         //this.checklist = checklist;
         this.dueDate = dueDate;
-        this.priority = priority; // 1 a 5 - blu, rosso, verde, giallo, azzurro 
+        this.priority = priority; // 1 a 5 - blu, azzurro, rosso, verde, giallo
                                   // 1 più priorità, 5 meno
         this.projectName = projectName;
     }
