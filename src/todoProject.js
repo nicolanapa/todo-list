@@ -1,6 +1,6 @@
 let ToDoArray = []; //Contenere tutti i ToDo
 let projectNameArray = []; // Contiene tutti i nomi dei progetti
-
+//console.log("Length of projectNameArray is " + projectNameArray.length);
 class ToDo { //CREA IL TODO E BASTA
     constructor(title, description, notes, /*checklist,*/ dueDate, priority, projectName) {
         this.title = title;
@@ -13,12 +13,23 @@ class ToDo { //CREA IL TODO E BASTA
         this.projectName = projectName;
     }
 }
-
+let contatoreLunghezza = -1;
 class Project { //CREA IL PROGETTO E MANDA IL NOME NELL'ARRAY
     constructor(projectName) {
         this.projectName = projectName;
-        projectNameArray.length = projectName.length + 1;
-        projectNameArray[length] = this.projectName;
+        contatoreLunghezza = contatoreLunghezza + 1;
+        return projectNameArray[contatoreLunghezza] = this.projectName;
+        //projectNameArray.length = projectNameArray.length + 1;
+        //console.log("Length of projectNameArray is " + projectNameArray.length);
+        //console.log("projectNameArray ARRAY " + projectNameArray);
+        /*if ( projectNameArray.length == 0 || projectNameArray.length == 1 ) {
+            projectNameArray[length] = this.projectName;
+            
+        }
+        else {
+            projectNameArray[length - 1] = this.projectName;
+        }*/
+        
         //this.addProjectNameArray();
         
     }
@@ -35,21 +46,29 @@ function defultProject() { //Progetto e ToDo di defualt
     //console.log(projectDefault);
     console.log(ToDoDefault);
 }
+function defultProject1() { //Progetto e ToDo di defualt
+    let projectDefault1 = new Project("default1");
+    let ToDoDefault1 = new ToDo("Comprare un albero", "Andare a comprare entro il 2024 un albero", 
+    "Albero normale se si riesce", "2024-01-28", "4", "default1");
+    //console.log(projectDefault);
+    console.log(ToDoDefault1);
+}
 
 defultProject();
+defultProject1();
 
 let projectTest1 = new Project("test1");
 let projectTest2 = new Project("test2");
 let projectTest3 = new Project("test3");
-
-console.log(projectTest1);
+let projectTest4 = new Project("test4");
+/*console.log(projectTest1);
 console.log(projectTest2);
 console.log(projectTest3);
-console.log(projectNameArray.length);
+console.log("Length of projectNameArray is " + projectNameArray.length);*/
 
 
 
-checkDebugToDoProjectNameARRAY();
+//checkDebugToDoProjectNameARRAY();
 
 function checkDebugToDoProjectNameARRAY() {
     for ( let i = 0; i < projectNameArray.length; i++ ) {
@@ -59,6 +78,9 @@ function checkDebugToDoProjectNameARRAY() {
         console.log(ToDoArray[i]);
     }
 }
+
+//console.log("projectNameArray ARRAY " + projectNameArray);
+//console.log(projectNameArray);
 
 //ToDo e progetto di default
 export { ToDoArray, ToDo, Project, projectNameArray };

@@ -1,23 +1,23 @@
 //function dateChecker() {
-    let todayDate = new Date();
-    if ( todayDate.getMonth() <= 9 ) {
-        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
-        console.log(todayDate);
-    }
-    else if ( todayDate.getDate() <= 9 ) {
-        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
-        console.log(todayDate);
-    }
-    else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
-        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
-        console.log(todayDate);
-    }
-    else {
-        todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
-        console.log(todayDate);
-    }
-    todayDate = todayDate.toString();
-    //return todayDate;
+let todayDate = new Date();
+if ( todayDate.getMonth() <= 9 ) {
+    todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+    console.log("Oggi è il " + todayDate);
+}
+else if ( todayDate.getDate() <= 9 ) {
+    todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+    console.log("Oggi è il " + todayDate);
+}
+else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
+    todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+    console.log("Oggi è il " + todayDate);
+}
+else {
+    todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
+    console.log("Oggi è il " + todayDate);
+}
+todayDate = todayDate.toString();
+//return todayDate;
 //}
 //dateChecker();
 
@@ -137,7 +137,7 @@ function addFormDOM(projectNameArray) {
     formStesso.appendChild(projectNameSelect);
 
     // PROJECTNAME Option loop
-    console.log(projectNameArray.length);
+    console.log("Length of projectNameArray is " + projectNameArray.length);
     for ( let i = 0; i < projectNameArray.length; i++  ) {
         let projectNameOption = document.createElement("option");
         projectNameOption.setAttribute("value", projectNameArray[i]);
