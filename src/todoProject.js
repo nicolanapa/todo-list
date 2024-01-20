@@ -48,8 +48,8 @@ function defultProject() { //Progetto e ToDo di defualt
 }
 function defultProject1() { //Progetto e ToDo di defualt
     let projectDefault1 = new Project("default1");
-    let ToDoDefault1 = new ToDo("Comprare un albero", "Andare a comprare entro il 2024 un albero", 
-    "Albero normale se si riesce", "2024-01-28", "4", "default1");
+    let ToDoDefault1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
+    "Albero normale se si riesce", "2024-12-25", "4", "default1");
     //console.log(projectDefault);
     console.log(ToDoDefault1);
 }
@@ -68,9 +68,9 @@ console.log("Length of projectNameArray is " + projectNameArray.length);*/
 
 
 
-//checkDebugToDoProjectNameARRAY();
+//checkDebug_ToDo_ProjectName_ARRAY();
 
-function checkDebugToDoProjectNameARRAY() {
+function checkDebug_ToDo_ProjectName_ARRAY() {
     for ( let i = 0; i < projectNameArray.length; i++ ) {
         console.log(projectNameArray[i]);
     }

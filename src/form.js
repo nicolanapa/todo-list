@@ -33,7 +33,7 @@ addFormButton();
 
 function addFormDOM(projectNameArray) {
     let formContainer = document.querySelector("#form-container");
-    /*
+    /* cose che mancano
     //this.checklist = checklist;
     */
     let formStesso = document.createElement("form");
@@ -124,12 +124,11 @@ function addFormDOM(projectNameArray) {
     formStesso.appendChild(priorityLabel);
     formStesso.appendChild(priorityInput);
 
-    // PROJECTNAME
-    //menù a tendina che mostra con un for each tutti i progetti esistenti;
+    // PROJECTNAME Select creation
     let projectNameLabel = document.createElement("label");
     projectNameLabel.textContent = "Scegli il progetto del ToDo:"
     let projectNameSelect = document.createElement("select");
-    projectNameLabel.setAttribute("for", "notes");//
+    projectNameLabel.setAttribute("for", "projectName");
     projectNameSelect.setAttribute("id", "projectName");
     projectNameSelect.setAttribute("name", "projectName");
 
@@ -145,8 +144,6 @@ function addFormDOM(projectNameArray) {
         projectNameSelect.appendChild(projectNameOption);
         console.log(projectNameOption);
     }
-
-    //
 }
 
 export { addFormDOM };
