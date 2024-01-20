@@ -124,7 +124,8 @@ function addFormDOM(projectNameArray) {
     formStesso.appendChild(priorityLabel);
     formStesso.appendChild(priorityInput);
 
-    priorityInput.addEventListener("input", () => {
+    // PRIORITY Input color
+    priorityInput.addEventListener("input", () => { 
     if ( priorityInput.value == 1 ) {
         priorityInput.style.accentColor = "blue";
     }
@@ -137,10 +138,10 @@ function addFormDOM(projectNameArray) {
 
     }
     else if ( priorityInput.value == 4 ) {
-        priorityInput.style.accentColor = "#ffcccb";
+        priorityInput.style.accentColor = "#D7A6A7";
     }
     else if ( priorityInput.value == 5 ) {
-        priorityInput.style.accentColor = "yellow";
+        priorityInput.style.accentColor = "#FFF9C6";
     }
     });
 
