@@ -1,4 +1,4 @@
-import { Project } from "./todoProject";
+import { Project, toDoArray, projectNameArray } from "./todoProject";
 
 function addFormProjectDOM() {
     let formContainer = document.querySelector("#form-container");
@@ -54,6 +54,8 @@ function getFormProjectValue(Project) {
     let projectName = document.getElementById("projectNameProject").value;
     let newProject = new Project(projectName);
     console.log(newProject);
+    console.log(projectNameArray);
+    console.log(toDoArray);
     return newProject;
 }
 

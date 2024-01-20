@@ -1,4 +1,4 @@
-let ToDoArray = []; //Contenere tutti i ToDo
+let toDoArray = []; //Contenere tutti i ToDo
 let projectNameArray = []; // Contiene tutti i nomi dei progetti
 //console.log("Length of projectNameArray is " + projectNameArray.length);
 class ToDo { //CREA IL TODO E BASTA
@@ -56,12 +56,12 @@ function checkDebug_ToDo_ProjectName_ARRAY() {
     for ( let i = 0; i < projectNameArray.length; i++ ) {
         console.log(projectNameArray[i]);
     }
-    for ( let i = 0; i < ToDoArray.length; i++ ) {
-        console.log(ToDoArray[i]);
+    for ( let i = 0; i < toDoArray.length; i++ ) {
+        console.log(toDoArray[i]);
     }
 }
 
 //console.log("projectNameArray ARRAY " + projectNameArray);
 //console.log(projectNameArray);
 
-export { ToDoArray, ToDo, Project, projectNameArray };
+export { toDoArray, ToDo, Project, projectNameArray };

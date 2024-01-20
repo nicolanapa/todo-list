@@ -158,13 +158,16 @@ function addFormDOM(projectNameArray) {
 
     // PROJECTNAME Option loop
     console.log("Length of projectNameArray is " + projectNameArray.length);
-    for ( let i = 0; i < projectNameArray.length; i++  ) {
-        let projectNameOption = document.createElement("option");
-        projectNameOption.setAttribute("value", projectNameArray[i]);
-        projectNameOption.textContent = projectNameArray[i];
-        projectNameSelect.appendChild(projectNameOption);
-        console.log(projectNameOption);
-    }
+    //function projectNameArrayLength() {
+        for ( let i = 0; i < projectNameArray.length; i++  ) {
+            let projectNameOption = document.createElement("option");
+            projectNameOption.setAttribute("value", projectNameArray[i]);
+            projectNameOption.textContent = projectNameArray[i];
+            projectNameSelect.appendChild(projectNameOption);
+            console.log(projectNameOption);
+        }
+    //}
+    //projectNameArrayLength();
 
     // Submit Button
     let submitButton = document.createElement("button");
@@ -190,11 +193,10 @@ function addFormDOM(projectNameArray) {
     // Get all form values by calling getFormValue()
     submitButton.addEventListener("click", () => {
         getFormValue(ToDo);
+        //projectNameArrayLength();
     });
 
 }
-
-
 
 function getFormValue(ToDo) {
     let ToDoTitle = document.getElementById("title").value;
