@@ -125,18 +125,23 @@ function addFormDOM(projectNameArray) {
     formStesso.appendChild(priorityInput);
 
     priorityInput.addEventListener("input", () => {
-    //if ( priorityInput.value == 1 ) {
-        //document.getElementById(priority).style.accentColor = "blue";
-        console.log(priorityInput.value);
-    //}
-    //else if ( priorityInput.value == 2 ) {
-        //document.getElementById(priority).style.accentColor = "#6495ed";
+    if ( priorityInput.value == 1 ) {
+        priorityInput.style.accentColor = "blue";
+    }
+    else if ( priorityInput.value == 2 ) {
+        priorityInput.style.accentColor = "#6495ed";
 
-    //}    
-    //else {
-        //document.getElementById(priority).style.accentColor = "red";
+    }    
+    else if ( priorityInput.value == 3 ) {
+        priorityInput.style.accentColor = "red";
 
-    //}
+    }
+    else if ( priorityInput.value == 4 ) {
+        priorityInput.style.accentColor = "#ffcccb";
+    }
+    else if ( priorityInput.value == 5 ) {
+        priorityInput.style.accentColor = "yellow";
+    }
     });
 
     // PROJECTNAME Select creation
