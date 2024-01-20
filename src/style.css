@@ -4,7 +4,8 @@
     margin: 0;
 }
 
-#dialog-form {
+#dialog-form,
+#dialog-form-project {
     margin: 10px 20% 10px 20%;
     padding: 5px;
     width: max(60%, 40%, 20%);

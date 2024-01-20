@@ -174,8 +174,16 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(submitButton);
 
+    function addShowFormButton() {
+        let formContainer = document.querySelector("#form-container");
+        let formShowToDoButton = document.createElement("button");
+        formShowToDoButton.textContent = "Crea un nuovo ToDo";
+        formShowToDoButton.setAttribute("id", "formShowButton");
+        formContainer.appendChild(formShowToDoButton);
+        return formShowToDoButton;
+    }
     // Shows the form after clicking the form button
-    formShowButton.addEventListener("click", () => {
+    addShowFormButton().addEventListener("click", () => {
         dialogFormContainer.showModal();
     });
     
@@ -183,15 +191,10 @@ function addFormDOM(projectNameArray) {
     submitButton.addEventListener("click", () => {
         getFormValue(ToDo);
     });
+
 }
 
-function addShowFormButton() {
-    let formContainer = document.querySelector("#form-container");
-    let formShowButton = document.createElement("button");
-    formShowButton.textContent = "Crea un nuovo ToDo";
-    formShowButton.setAttribute("id", "formShowButton");
-    formContainer.appendChild(formShowButton); 
-}
+
 
 function getFormValue(ToDo) {
     let ToDoTitle = document.getElementById("title").value;
@@ -206,7 +209,6 @@ function getFormValue(ToDo) {
     return newToDo;
 }
 
-addShowFormButton();
 addFormDOM(projectNameArray);
 
 export { addFormDOM, getFormValue };
