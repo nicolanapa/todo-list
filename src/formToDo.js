@@ -195,7 +195,7 @@ function addFormDOM(projectNameArray) {
             }
             contatoreLunghezzaOption1 = -1;
     }
-    projectNameArrayOption();
+    projectNameArrayOption("no");
     function equalityChecker() {
         for ( let i = 0; i < projectNameArray.length; i++) {
             if ( tempProjectNameArray[i] == projectNameArray[i] ) {
