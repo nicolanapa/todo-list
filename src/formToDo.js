@@ -1,5 +1,4 @@
 import { ToDo, Project, projectNameArray } from "./todoProject";
-
 function dateChecker() { // Creates an variable with today's date
     let todayDate = new Date();
     if ( todayDate.getMonth() <= 9 ) {
@@ -22,7 +21,16 @@ function dateChecker() { // Creates an variable with today's date
     return todayDate;
 }
 
+
+
+
 function addFormDOM(projectNameArray) {
+    let tempProjectNameArray = [];
+    for ( let i = 0; i < projectNameArray.length; i++ ) {
+        tempProjectNameArray[i] = projectNameArray[i];
+    }
+    console.log(tempProjectNameArray);
+
     let formContainer = document.querySelector("#form-container");
 
     /* cose che mancano
@@ -155,20 +163,72 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(projectNameLabel);
     formStesso.appendChild(projectNameSelect);
-
+    let projectNameOption = [];
+    let contatoreLunghezzaOption = -1;
     // PROJECTNAME Option loop
-    console.log("Length of projectNameArray is " + projectNameArray.length);
-    //function projectNameArrayLength() {
-        for ( let i = 0; i < projectNameArray.length; i++  ) {
-            let projectNameOption = document.createElement("option");
-            projectNameOption.setAttribute("value", projectNameArray[i]);
-            projectNameOption.textContent = projectNameArray[i];
-            projectNameSelect.appendChild(projectNameOption);
-            console.log(projectNameOption);
+    //console.log("Length of projectNameArray is " + projectNameArray.length);
+    let contatoreLunghezzaOption1 = -1;
+    function projectNameArrayOption(deleting) {
+        contatoreLunghezzaOption1 = -1;
+        for ( let i = 0; i < projectNameArray.length; i++ ) {
+            contatoreLunghezzaOption = contatoreLunghezzaOption + 1;
+            contatoreLunghezzaOption1 = contatoreLunghezzaOption1 + 1;
+            projectNameOption[contatoreLunghezzaOption] = document.createElement("option");
+            projectNameOption[contatoreLunghezzaOption].setAttribute("value", projectNameArray[i]);
+            projectNameOption[contatoreLunghezzaOption].textContent = projectNameArray[i];
+            projectNameSelect.appendChild(projectNameOption[contatoreLunghezzaOption]);
+            //console.log(projectNameOption[contatoreLunghezzaOption]);
         }
-    //}
-    //projectNameArrayLength();
+        contatoreLunghezzaOption = -1;
+        if ( deleting == "delete" ) {
+            for ( let i = 0; i < contatoreLunghezzaOption1; i++ ) {
+                projectNameSelect.removeChild(projectNameOption[i]);
+            }
+            contatoreLunghezzaOption1 = -1;
+        }
+        console.log(projectNameOption);
+    } //another function that instead delete all those options
 
+    function projectNameArrayOptionDeleter(projectNameOption) {
+            for ( let i = 0; i < contatoreLunghezzaOption1; i++ ) {
+                projectNameSelect.removeChild(projectNameOption[i]);
+            }
+            contatoreLunghezzaOption1 = -1;
+    }
+    projectNameArrayOption();
+    function equalityChecker() {
+        for ( let i = 0; i < projectNameArray.length; i++) {
+            if ( tempProjectNameArray[i] == projectNameArray[i] ) {
+                if ( i < projectNameArray.length ) {
+                    i = projectNameArray.length - 1;
+                    return true;
+                }
+            }
+            else {
+                i = projectNameArray.length;
+                return false;
+            }
+        }
+        
+    }
+    addShowFormButton().addEventListener("click", () => {
+        //projectNameArrayOptionDeleter();
+        console.log(tempProjectNameArray);
+        console.log( equalityChecker() );
+        //console.log( tempProjectNameArray == projectNameArray );
+        if ( equalityChecker() == true ) {
+            dialogFormContainer.showModal();
+        }
+        else if ( equalityChecker() == false ) {
+            projectNameArrayOption("delete");
+            dialogFormContainer.showModal();
+            for ( let i = 0; i < projectNameArray.length; i++ ) {
+                tempProjectNameArray[i] = projectNameArray[i];
+            }
+        }
+    });
+
+    
     // Submit Button
     let submitButton = document.createElement("button");
     submitButton.setAttribute("id", "submitButton");
@@ -186,9 +246,11 @@ function addFormDOM(projectNameArray) {
         return formShowToDoButton;
     }
     // Shows the form after clicking the form button
-    addShowFormButton().addEventListener("click", () => {
-        dialogFormContainer.showModal();
-    });
+    // addShowFormButton().addEventListener("click", () => {
+    //     dialogFormContainer.showModal();
+    //     projectNameArrayOptionDeleter();
+    //     projectNameArrayOption();
+    // });
     
     // Get all form values by calling getFormValue()
     submitButton.addEventListener("click", () => {
