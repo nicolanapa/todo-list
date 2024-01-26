@@ -20,13 +20,20 @@ class ToDo { //CREA IL TODO E BASTA
     }
 }
 
-// REWORK OF classe ToDo
+// NEW REWORK OF classe ToDo
 /*
 Usando toDoArray[] come con projectNameArray[];
 toDoArray[[[], []]]
 [[ToDO1], [ToDo2], ...]
-[[(ToDO1)[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName]]]
-toDoArray = [ [toDo[0], [1], [2], [3], [4], [5]], [...]];
+[[(ToDO1)[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]]]
+
+toDoArray = [
+    [[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]], //RIGA 0
+    [[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]], //RIGA 1
+];
+
+toDoArray = [ [(toDo)[0], [1], [2], [3], [4], [5]], [...]];
+console.log(toDoArray[0][2]); // RIGA, COLONNA
 Complesso all'inizio ma dovrebbe essere più semplice lavorare con questi dati
 Lo tengo dato che è utile per visualizzare l'array toDoArray*/
 
@@ -45,6 +52,9 @@ function defultProject() { //Progetto e ToDo di defualt
     let projectDefault = new Project("default");
     let ToDoDefault = new ToDo("Comprare un materasso", "Andare a comprare il prima possibile un nuovo materasso", 
     "Bianco se si riesce", "2024-01-17", "1", "default");
+    console.log(ToDoDefault);
+    ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
+    "Latte", "2024-02-10", "3", "default");
     //console.log(projectDefault);
     console.log(ToDoDefault);
 }
