@@ -1,4 +1,4 @@
-import { ToDo, Project, projectNameArray } from "./todoProject";
+import { ToDo, Project, projectNameArray, toDoArray } from "./todoProject";
 function dateChecker() { // Creates an variable with today's date
     let todayDate = new Date();
     if ( todayDate.getMonth() <= 9 ) {
