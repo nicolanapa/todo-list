@@ -25,11 +25,11 @@ function dateChecker() { // Creates an variable with today's date
 
 
 function addFormDOM(projectNameArray) {
-    let tempProjectNameArray = [];
+    /*let tempProjectNameArray = [];
     for ( let i = 0; i < projectNameArray.length; i++ ) {
         tempProjectNameArray[i] = projectNameArray[i];
     }
-    console.log(tempProjectNameArray);
+    console.log(tempProjectNameArray);*/
 
     let formContainer = document.querySelector("#form-container");
 
@@ -163,33 +163,35 @@ function addFormDOM(projectNameArray) {
 
     formStesso.appendChild(projectNameLabel);
     formStesso.appendChild(projectNameSelect);
-    let projectNameOption = [];
-    let contatoreLunghezzaOption = -1;
+    //let projectNameOption = [];
+    //let contatoreLunghezzaOption = -1;
     // PROJECTNAME Option loop
     //console.log("Length of projectNameArray is " + projectNameArray.length);
-    let contatoreLunghezzaOption1 = -1;
-    function projectNameArrayOption(deleting) {
-        contatoreLunghezzaOption1 = -1;
+    //let contatoreLunghezzaOption1 = -1;
+    function projectNameArrayOption(/*deleting*/) {
+        //contatoreLunghezzaOption1 = -1;
         for ( let i = 0; i < projectNameArray.length; i++ ) {
-            contatoreLunghezzaOption = contatoreLunghezzaOption + 1;
-            contatoreLunghezzaOption1 = contatoreLunghezzaOption1 + 1;
-            projectNameOption[contatoreLunghezzaOption] = document.createElement("option");
-            projectNameOption[contatoreLunghezzaOption].setAttribute("value", projectNameArray[i]);
-            projectNameOption[contatoreLunghezzaOption].textContent = projectNameArray[i];
-            projectNameSelect.appendChild(projectNameOption[contatoreLunghezzaOption]);
+            //contatoreLunghezzaOption = contatoreLunghezzaOption + 1;
+            //contatoreLunghezzaOption1 = contatoreLunghezzaOption1 + 1;
+            let projectNameOption = document.createElement("option");
+            projectNameOption.setAttribute("value", projectNameArray[i]);
+            projectNameOption.textContent = projectNameArray[i];
+            projectNameSelect.appendChild(projectNameOption);
             //console.log(projectNameOption[contatoreLunghezzaOption]);
         }
-        contatoreLunghezzaOption = -1;
-        if ( deleting == "delete" ) {
+        //contatoreLunghezzaOption = -1;
+        /*if ( deleting == "delete" ) {
             for ( let i = 0; i < contatoreLunghezzaOption1; i++ ) {
                 projectNameSelect.removeChild(projectNameOption[i]);
             }
             contatoreLunghezzaOption1 = -1;
         }
-        console.log(projectNameOption);
+        console.log(projectNameOption);*/
     } //another function that instead delete all those options
 
-    function projectNameArrayOptionDeleter(projectNameOption) {
+    projectNameArrayOption();
+
+    /*function projectNameArrayOptionDeleter(projectNameOption) {
             for ( let i = 0; i < contatoreLunghezzaOption1; i++ ) {
                 projectNameSelect.removeChild(projectNameOption[i]);
             }
@@ -210,13 +212,13 @@ function addFormDOM(projectNameArray) {
             }
         }
         
-    }
+    }*/
     addShowFormButton().addEventListener("click", () => {
         //projectNameArrayOptionDeleter();
-        console.log(tempProjectNameArray);
-        console.log( equalityChecker() );
+        //console.log(tempProjectNameArray);
+        //console.log( equalityChecker() );
         //console.log( tempProjectNameArray == projectNameArray );
-        if ( equalityChecker() == true ) {
+        /*if ( equalityChecker() == true ) {
             dialogFormContainer.showModal();
         }
         else if ( equalityChecker() == false ) {
@@ -225,7 +227,8 @@ function addFormDOM(projectNameArray) {
             for ( let i = 0; i < projectNameArray.length; i++ ) {
                 tempProjectNameArray[i] = projectNameArray[i];
             }
-        }
+        }*/
+        dialogFormContainer.showModal();
     });
 
     

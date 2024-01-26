@@ -53,10 +53,21 @@ function addFormProjectDOM() {
 function getFormProjectValue(Project) {
     let projectName = document.getElementById("projectNameProject").value;
     let newProject = new Project(projectName);
+
+    addProjectOptionFromProject();
+    
     console.log(newProject);
     console.log(projectNameArray);
     console.log(toDoArray);
     return newProject;
+}
+
+function addProjectOptionFromProject() { // Simile a projectNameArrayOption() ma solo aggiunge un progetto
+    let projectNameSelect2 = document.querySelector("#projectName");
+    let projectNameOption2 = document.createElement("option");
+    projectNameOption2.setAttribute("value", projectNameArray[projectNameArray.length - 1]);
+    projectNameOption2.textContent = projectNameArray[projectNameArray.length - 1];
+    projectNameSelect2.appendChild(projectNameOption2);
 }
 
 addFormProjectDOM();
