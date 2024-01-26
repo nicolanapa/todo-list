@@ -25,22 +25,17 @@ function addFormDOM(projectNameArray) {
     /* cose che mancano
     //this.checklist = checklist;
     */
-   // POPUP
-    function dialogForm() {
-        let formContainer = document.querySelector("#form-container");
 
-        
+    // POPUP
+    let formContainer = document.querySelector("#form-container");
 
-        let dialogFormContainer = document.createElement("dialog");
-        dialogFormContainer.setAttribute("id", "dialog-form");
-        let formStesso = document.createElement("form");
-        formStesso.setAttribute("method", "dialog");
-        formStesso.setAttribute("action", "#");
-        formContainer.appendChild(dialogFormContainer);
-        dialogFormContainer.appendChild(formStesso);
-    }
-    
-    dialogForm();
+    let dialogFormContainer = document.createElement("dialog");
+    dialogFormContainer.setAttribute("id", "dialog-form");
+    let formStesso = document.createElement("form");
+    formStesso.setAttribute("method", "dialog");
+    formStesso.setAttribute("action", "#");
+    formContainer.appendChild(dialogFormContainer);
+    dialogFormContainer.appendChild(formStesso);;
 
     // TITOLO
     function titleForm() {
@@ -145,34 +140,30 @@ function addFormDOM(projectNameArray) {
 
         formStesso.appendChild(priorityLabel);
         formStesso.appendChild(priorityInput);
-    }
-    
-    priorityForm();
 
-    // PRIORITY Input color
-    function priorityInputColorForm() {
+        // PRIORITY Input color
         priorityInput.addEventListener("input", () => { 
-        if ( priorityInput.value == 1 ) {
-            priorityInput.style.accentColor = "blue";
-        }
-        else if ( priorityInput.value == 2 ) {
-            priorityInput.style.accentColor = "#6495ed";
+            if ( priorityInput.value == 1 ) {
+                priorityInput.style.accentColor = "blue";
+            }
+            else if ( priorityInput.value == 2 ) {
+                priorityInput.style.accentColor = "#6495ed";
 
-        }    
-        else if ( priorityInput.value == 3 ) {
-            priorityInput.style.accentColor = "red";
+            }    
+            else if ( priorityInput.value == 3 ) {
+                priorityInput.style.accentColor = "red";
 
-        }
-        else if ( priorityInput.value == 4 ) {
-            priorityInput.style.accentColor = "#D7A6A7";
-        }
-        else if ( priorityInput.value == 5 ) {
-            priorityInput.style.accentColor = "#FFF9C6";
-        }
+            }
+            else if ( priorityInput.value == 4 ) {
+                priorityInput.style.accentColor = "#D7A6A7";
+            }
+            else if ( priorityInput.value == 5 ) {
+                priorityInput.style.accentColor = "#FFF9C6";
+            }
         });
     }
     
-    priorityInputColorForm();
+    priorityForm();
 
     // PROJECTNAME Select creation
     function projectNameSelectForm() {
@@ -185,21 +176,24 @@ function addFormDOM(projectNameArray) {
 
         formStesso.appendChild(projectNameLabel);
         formStesso.appendChild(projectNameSelect);
+
+        function projectNameArrayOption() {
+            for ( let i = 0; i < projectNameArray.length; i++ ) {
+                let projectNameOption = document.createElement("option");
+                projectNameOption.setAttribute("value", projectNameArray[i]);
+                projectNameOption.textContent = projectNameArray[i];
+                projectNameSelect.appendChild(projectNameOption);
+            }
+        }
+        projectNameArrayOption();
     }
     
     projectNameSelectForm();
 
     // PROJECTNAME Option loop
-    function projectNameArrayOption() {
-        for ( let i = 0; i < projectNameArray.length; i++ ) {
-            let projectNameOption = document.createElement("option");
-            projectNameOption.setAttribute("value", projectNameArray[i]);
-            projectNameOption.textContent = projectNameArray[i];
-            projectNameSelect.appendChild(projectNameOption);
-        }
-    } 
+    
 
-    projectNameArrayOption();
+    
 
     addShowFormButton().addEventListener("click", () => {
         dialogFormContainer.showModal();
@@ -214,6 +208,7 @@ function addFormDOM(projectNameArray) {
 
         formStesso.appendChild(submitButton);
 
+        // Get all form values by calling getFormValue()
         submitButton.addEventListener("click", () => {
             getFormValue(ToDo);
             //projectNameArrayLength();
@@ -230,10 +225,6 @@ function addFormDOM(projectNameArray) {
         formContainer.appendChild(formShowToDoButton);
         return formShowToDoButton;
     }
-    
-    // Get all form values by calling getFormValue()
-    
-
 }
 
 function getFormValue(ToDo) {

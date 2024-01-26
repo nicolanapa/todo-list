@@ -1,6 +1,7 @@
 import { Project, toDoArray, projectNameArray } from "./todoProject";
 
 function addFormProjectDOM() {
+    // POPUP
     let formContainer = document.querySelector("#form-container");
 
     let dialogFormProjectContainer = document.createElement("dialog");
@@ -12,23 +13,36 @@ function addFormProjectDOM() {
     dialogFormProjectContainer.appendChild(formProjectStesso);
 
     // PROJECTNAME Creation
-    let projectNameLabel = document.createElement("label");
-    projectNameLabel.textContent = "Crea il tuo nuovo progetto: ";
-    let projectNameSelect = document.createElement("input");
-    projectNameLabel.setAttribute("for", "projectNameProject");
-    projectNameSelect.setAttribute("id", "projectNameProject");
-    projectNameSelect.setAttribute("name", "projectNameProject");
+    function projectNameForm() {
+        let projectNameLabel = document.createElement("label");
+        projectNameLabel.textContent = "Crea il tuo nuovo progetto: ";
+        let projectNameSelect = document.createElement("input");
+        projectNameLabel.setAttribute("for", "projectNameProject");
+        projectNameSelect.setAttribute("id", "projectNameProject");
+        projectNameSelect.setAttribute("name", "projectNameProject");
 
-    formProjectStesso.appendChild(projectNameLabel);
-    formProjectStesso.appendChild(projectNameSelect);
+        formProjectStesso.appendChild(projectNameLabel);
+        formProjectStesso.appendChild(projectNameSelect);
+    }
+    
+    projectNameForm();
 
     // Submit Button
-    let submitButton = document.createElement("button");
-    submitButton.setAttribute("id", "submitButton");
-    submitButton.setAttribute("type", "submit");
-    submitButton.textContent = "Salva";
+    function submitButtonForm() {
+        let submitButton = document.createElement("button");
+        submitButton.setAttribute("id", "submitButton");
+        submitButton.setAttribute("type", "submit");
+        submitButton.textContent = "Salva";
 
-    formProjectStesso.appendChild(submitButton);
+        formProjectStesso.appendChild(submitButton);
+
+        // Get all form values by calling getFormValue()
+        submitButton.addEventListener("click", () => {
+            getFormProjectValue(Project);
+        });
+    }
+    
+    submitButtonForm();
 
     function addShowFormProjectButton() {
         let formContainer = document.querySelector("#form-container");
@@ -40,13 +54,8 @@ function addFormProjectDOM() {
     }
 
     // Shows the form after clicking the form button
-        addShowFormProjectButton().addEventListener("click", () => {
-            dialogFormProjectContainer.showModal();
-    });
-
-    // Get all form values by calling getFormValue()
-    submitButton.addEventListener("click", () => {
-        getFormProjectValue(Project);
+    addShowFormProjectButton().addEventListener("click", () => {
+        dialogFormProjectContainer.showModal();
     });
 }
 
