@@ -92,7 +92,7 @@ function allButtons(newToDoContainer) {
     newToDoContainer.appendChild(deleteButton);
 
     viewButton.addEventListener("click", () => {
-        fullViewToDo(0); // ?
+        fullViewToDo(0);
     });
 
     editButton.addEventListener("click", () => {
