@@ -87,3 +87,4 @@ function checkDebug_ToDo_ProjectName_ARRAY() {
 //console.log(projectNameArray);
 
 export { toDoArray, ToDo, Project, projectNameArray };
+// CAMBIARE IN FUTURO I COLORI PRIORITY

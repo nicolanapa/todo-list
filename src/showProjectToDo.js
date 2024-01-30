@@ -22,25 +22,27 @@ future new "main container")
 */
 let mainContainer = document.querySelector(".main-container");
 
-function checkPriority(newToDoContainer, number) {
-    if ( toDoArray[number][4] == 1 ) {
+function checkPriority(newToDoContainer, array) {
+    if ( toDoArray[array][4] == 1 ) {
         newToDoContainer.style.cssText = "background-color: #3366FF; color: white;";
     }
-    else if ( toDoArray[number][4] == 2 ) {
+    else if ( toDoArray[array][4] == 2 ) {
         newToDoContainer.style.cssText = "background-color: #B1CAF6; color: black;";
     }
-    else if ( toDoArray[number][4] == 3 ) {
+    else if ( toDoArray[array][4] == 3 ) {
         newToDoContainer.style.cssText = "background-color: #FF6666; color: white;";
     }
-    else if ( toDoArray[number][4] == 4 ) {
+    else if ( toDoArray[array][4] == 4 ) {
         newToDoContainer.style.cssText = "background-color: #D7A6A7; color: black;";
     }
-    else if ( toDoArray[number][4] == 5 ) {
+    else if ( toDoArray[array][4] == 5 ) {
         newToDoContainer.style.cssText = "background-color: #FFF9C6; color: blue;";
     }
 }
 
 function showDefaultProject() {
+    let arrayNumber = 0;
+
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);
@@ -50,7 +52,7 @@ function showDefaultProject() {
     newProject.setAttribute("class", "projectTitle");
     newProjectContainer.appendChild(newProject);
 
-    let newToDoContainer = document.createElement("div");//background-color == priority
+    let newToDoContainer = document.createElement("div");
     newToDoContainer.setAttribute("class", "toDoContainer");
     checkPriority(newToDoContainer, 0);
     newProjectContainer.appendChild(newToDoContainer);
@@ -90,7 +92,7 @@ function allButtons(newToDoContainer) {
     newToDoContainer.appendChild(deleteButton);
 
     viewButton.addEventListener("click", () => {
-
+        fullViewToDo(0); // ?
     });
 
     editButton.addEventListener("click", () => {
@@ -104,8 +106,106 @@ function allButtons(newToDoContainer) {
 
 showDefaultProject();
 
-function fullViewToDo() {
+function fullViewToDo(array) {
+    let formToDoContainer = document.querySelector("#form-container");
+
+    let dialogToDoContainer = document.createElement("dialog");
+    dialogToDoContainer.setAttribute("id", "dialog-form-project");
+    let formToDoStesso = document.createElement("form");
+    formToDoStesso.setAttribute("method", "dialog");
+    formToDoStesso.setAttribute("action", "#");
+    formToDoStesso.setAttribute("class", "toDoFullView");
+    formToDoContainer.appendChild(dialogToDoContainer);
+    dialogToDoContainer.appendChild(formToDoStesso);
+
+    checkPriority(formToDoStesso, array)
+
+    let titolo = document.createElement("div");
+    titolo.textContent = "Titolo: ";
+    titolo.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(titolo);
+
+    let newToDoTitle = document.createElement("h5");
+    newToDoTitle.textContent = toDoArray[array][0];
+    newToDoTitle.setAttribute("class", "toDoTitle");
+    newToDoTitle.style.cssText = "font-size: calc(1rem + 3px);"
+    formToDoStesso.appendChild(newToDoTitle);
+
+
+    let descrizione = document.createElement("div");
+    descrizione.textContent = "Descrizione: ";
+    descrizione.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(descrizione);
     
+
+    let newToDoDescription = document.createElement("p");
+    newToDoDescription.textContent = toDoArray[array][1];
+    newToDoTitle.setAttribute("class", "toDoDescription");
+    formToDoStesso.appendChild(newToDoDescription);
+
+
+    let note = document.createElement("div");
+    note.textContent = "Notes: ";
+    note.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(note);
+
+    let newToDoNotes = document.createElement("p");
+    newToDoNotes.textContent = toDoArray[array][2];
+    newToDoNotes.setAttribute("class", "toDoNotes");
+    formToDoStesso.appendChild(newToDoNotes);
+
+
+    let scadenza = document.createElement("div");
+    scadenza.textContent = "DueDate: ";
+    scadenza.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(scadenza);
+
+    let newToDoDueDate = document.createElement("p");
+    newToDoDueDate.textContent = toDoArray[array][3];
+    newToDoDueDate.setAttribute("class", "toDoDueDate");
+    newToDoDueDate.style.cssText = "font-size: calc(1rem + 1px);"
+    formToDoStesso.appendChild(newToDoDueDate);
+
+
+    let priorità = document.createElement("div");
+    priorità.textContent = "Priorità (1 più, 5 meno): ";
+    priorità.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(priorità);
+
+    let newToDoPriority = document.createElement("input");
+    newToDoPriority.setAttribute("type", "range");
+    newToDoPriority.setAttribute("min", "1");
+    newToDoPriority.setAttribute("max", "5");
+    newToDoPriority.setAttribute("id", "newpriority");
+    newToDoPriority.setAttribute("name", "newpriority");
+    newToDoPriority.setAttribute("placeholder", "1/2/3/4/5");
+    newToDoPriority.setAttribute("value", toDoArray[array][4]);
+    formToDoStesso.appendChild(newToDoPriority); 
+    document.getElementById("newpriority").disabled = true;
+
+
+    let progettoNome = document.createElement("div");
+    progettoNome.textContent = "Project Name: ";
+    progettoNome.setAttribute("class", "toDoSpecificatore");
+    formToDoStesso.appendChild(progettoNome);
+
+    let newToDoProjectName = document.createElement("h5");
+    newToDoProjectName.textContent = toDoArray[array][5];
+    newToDoProjectName.setAttribute("class", "toDoProjectName");
+    formToDoStesso.appendChild(newToDoProjectName);
+
+    function submitButtonForm() {
+        let submitButton = document.createElement("button");
+        submitButton.setAttribute("id", "submitButton");
+        submitButton.setAttribute("type", "submit");
+        submitButton.textContent = "Indietro";
+        submitButton.style.margin = "45px 0 -10px 0";
+
+        formToDoStesso.appendChild(submitButton);
+    }
+
+    submitButtonForm();
+    dialogToDoContainer.showModal();
 }
 
 function showAllProjects() {

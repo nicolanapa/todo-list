@@ -111,3 +111,34 @@ input[type="range"] {
     background-color: rgb(186, 186, 186);
     color: rgb(28, 25, 25);
 }
+
+.toDoFullView {
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.toDoDescription {
+    font-size: 15px;
+}
+
+.toDoNotes {
+    font-size: 14px;
+}
+
+.toDoProjectName {
+    font-size: 20px;
+}
+
+.toDoSpecificatore {
+    text-align: left;
+    font-size: calc(1rem + 1px);
+    font-style: italic;
+    margin: 20px 0 0 0;
+    padding: 15px;
+}
+
+.toDoSpecificatore:nth-child(1) {
+    margin-top: 0px;
+}
