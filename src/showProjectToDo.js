@@ -1,12 +1,15 @@
+import { toDoArray, projectNameArray } from "./todoProject";
+
 // FIRST Shows the default project
 // SECOND And the other projects (one function about FIRST another about SECOND)
-/*  If project == no todos then only show title of project and add some space
+/*  If project == no todos then only show title of project and add some space (padding)
     for future todos
 */
 // When creating new todo, append it to their head project
 /* When creating new project, append them to the bottom (appends to a 
 future new "main container")
-*/ 
+*/
+
 /*
     For each todos view only title and duedate
     Make a little button / click the todo
@@ -17,8 +20,98 @@ future new "main container")
     but only make available changing title, description, notes, priority and duedate
     not the project where the todo is (for now)
 */
+let mainContainer = document.querySelector(".main-container");
+
+function checkPriority(newToDoContainer, number) {
+    if ( toDoArray[number][4] == 1 ) {
+        newToDoContainer.style.cssText = "background-color: #3366FF; color: white;";
+    }
+    else if ( toDoArray[number][4] == 2 ) {
+        newToDoContainer.style.cssText = "background-color: #B1CAF6; color: black;";
+    }
+    else if ( toDoArray[number][4] == 3 ) {
+        newToDoContainer.style.cssText = "background-color: #FF6666; color: white;";
+    }
+    else if ( toDoArray[number][4] == 4 ) {
+        newToDoContainer.style.cssText = "background-color: #D7A6A7; color: black;";
+    }
+    else if ( toDoArray[number][4] == 5 ) {
+        newToDoContainer.style.cssText = "background-color: #FFF9C6; color: blue;";
+    }
+}
+
 function showDefaultProject() {
+    let newProjectContainer = document.createElement("div");
+    newProjectContainer.setAttribute("class", "projectContainer"); 
+    mainContainer.appendChild(newProjectContainer);
+
+    let newProject = document.createElement("h2");
+    newProject.textContent = projectNameArray[0];
+    newProject.setAttribute("class", "projectTitle");
+    newProjectContainer.appendChild(newProject);
+
+    let newToDoContainer = document.createElement("div");//background-color == priority
+    newToDoContainer.setAttribute("class", "toDoContainer");
+    checkPriority(newToDoContainer, 0);
+    newProjectContainer.appendChild(newToDoContainer);
+
+    let titleDueDateContainer = document.createElement("div");
+    titleDueDateContainer.setAttribute("class", "titleDueDateContainer");
+    newToDoContainer.appendChild(titleDueDateContainer);
+
+    let newToDoTitle = document.createElement("h5");
+    newToDoTitle.textContent = toDoArray[0][0];
+    newToDoTitle.setAttribute("class", "toDoTitle");
+    titleDueDateContainer.appendChild(newToDoTitle);
+
+    let newToDoDueDate = document.createElement("p");
+    newToDoDueDate.textContent = toDoArray[0][3];
+    newToDoDueDate.setAttribute("class", "toDoDueDate");
+    titleDueDateContainer.appendChild(newToDoDueDate);
+
+    allButtons(newToDoContainer);
+}
+
+function allButtons(newToDoContainer) {
+    let viewButton = document.createElement("button");
+    viewButton.textContent = "View";
+    viewButton.setAttribute("class", "littleButtons");
+
+    let editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    editButton.setAttribute("class", "littleButtons");
+
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("class", "littleButtons");
+
+    newToDoContainer.appendChild(viewButton);
+    newToDoContainer.appendChild(editButton);
+    newToDoContainer.appendChild(deleteButton);
+
+    viewButton.addEventListener("click", () => {
+
+    });
+
+    editButton.addEventListener("click", () => {
+
+    });
+
+    deleteButton.addEventListener("click", () => {
+        newToDoContainer.remove();
+    });
+}
+
+showDefaultProject();
+
+function fullViewToDo() {
+    
+}
+
+function showAllProjects() {
 
 }
 
-export { showDefaultProject };
+showAllProjects();
+
+export { showDefaultProject, showAllProjects };

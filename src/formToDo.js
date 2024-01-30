@@ -144,14 +144,14 @@ function addFormDOM(projectNameArray) {
         // PRIORITY Input color
         priorityInput.addEventListener("input", () => { 
             if ( priorityInput.value == 1 ) {
-                priorityInput.style.accentColor = "blue";
+                priorityInput.style.accentColor = "#3366FF";
             }
             else if ( priorityInput.value == 2 ) {
-                priorityInput.style.accentColor = "#6495ed";
+                priorityInput.style.accentColor = "#B1CAF6";
 
             }    
             else if ( priorityInput.value == 3 ) {
-                priorityInput.style.accentColor = "red";
+                priorityInput.style.accentColor = "#FF6666";
 
             }
             else if ( priorityInput.value == 4 ) {

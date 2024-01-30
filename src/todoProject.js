@@ -61,7 +61,7 @@ function defultProject() { //Progetto e ToDo di defualt
 function testProject1() { //Progetto e ToDo di defualt
     let projectTest1 = new Project("test1");
     let ToDoTest1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-12-25", "4", "default1");
+    "Albero normale se si riesce", "2024-12-25", "4", "test1");
     //console.log(projectDefault);
     console.log(ToDoTest1);
 }
