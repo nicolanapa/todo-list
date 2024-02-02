@@ -22,10 +22,6 @@ function dateChecker() { // Creates an variable with today's date
 }
 
 function addFormDOM(projectNameArray) {
-    /* cose che mancano
-    //this.checklist = checklist;
-    */
-
     // POPUP
     let formContainer = document.querySelector("#form-container");
 

@@ -47,7 +47,8 @@ input[type="range"] {
 }
 
 #formShowButton,
-#submitButton {
+#submitButton,
+#toDoProjectName {
     padding: 15px 30px;
     margin: 10px;
     border-style: none;
@@ -127,7 +128,8 @@ input[type="range"] {
     font-size: 14px;
 }
 
-.toDoProjectName {
+.toDoProjectName,
+#toDoProjectName {
     font-size: 20px;
 }
 
@@ -141,4 +143,9 @@ input[type="range"] {
 
 .toDoSpecificatore:nth-child(1) {
     margin-top: -20px;
+}
+
+#toDoProjectName {
+    display: flex;
+    padding: 8px 20px;
 }
