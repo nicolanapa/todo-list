@@ -1,16 +1,16 @@
 import { ToDo, Project, projectNameArray, toDoArray } from "./todoProject";
 function dateChecker() { // Creates an variable with today's date
     let todayDate = new Date();
-    if ( todayDate.getMonth() <= 9 ) {
+    if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
+        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
+        console.log("Oggi è il " + todayDate);
+    }
+    else if ( todayDate.getMonth() <= 9  && todayDate.getDate() >= 9) {
         todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
         console.log("Oggi è il " + todayDate);
     }
-    else if ( todayDate.getDate() <= 9 ) {
+    else if ( todayDate.getDate() <= 9 && todayDate.getMonth() >= 9 ) {
         todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
-        console.log("Oggi è il " + todayDate);
-    }
-    else if ( todayDate.getMonth() <= 9 && todayDate.getDate() <= 9 ) {
-        todayDate = todayDate.getFullYear() + "-0" + (todayDate.getMonth() + 1) + "-0" + todayDate.getDate();
         console.log("Oggi è il " + todayDate);
     }
     else {

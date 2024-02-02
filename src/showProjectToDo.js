@@ -349,12 +349,12 @@ function editToDo(array) { // EDIT BUTTON
 }
 
 function getEditValue(array) { // GET EDIT VALUE
-    toDoArray[array][0] = String(document.getElementById("toDoTitle").value);
-    toDoArray[array][1] = String(document.getElementById("toDoDescription").value);
-    toDoArray[array][2] = String(document.getElementById("toDoNotes").value);
-    toDoArray[array][3] = String(document.getElementById("toDoDueDate").value);
-    toDoArray[array][4] = String(document.getElementById("newpriority").value);
-    toDoArray[array][5] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
+    toDoArray[array[0]] = String(document.getElementById("toDoTitle").value);
+    toDoArray[array[1]] = String(document.getElementById("toDoDescription").value);
+    toDoArray[array[2]] = String(document.getElementById("toDoNotes").value);
+    toDoArray[array[3]] = String(document.getElementById("toDoDueDate").value);
+    toDoArray[array[4]] = String(document.getElementById("newpriority").value);
+    toDoArray[array[5]] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
 
     console.table(toDoArray);
 }
