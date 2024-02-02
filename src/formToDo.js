@@ -17,7 +17,7 @@ function dateChecker() { // Creates an variable with today's date
         todayDate = todayDate.getFullYear() + "-" + (todayDate.getMonth() + 1) + "-" + todayDate.getDate();
         console.log("Oggi è il " + todayDate);
     }
-    todayDate = todayDate.toString();
+    todayDate = String(todayDate);
     return todayDate;
 }
 
@@ -137,30 +137,11 @@ function addFormDOM(projectNameArray) {
         priorityInput.setAttribute("name", "priority");
         priorityInput.setAttribute("placeholder", "1/2/3/4/5");
         priorityInput.setAttribute("value", "1");//DA CANCELLARE, forse
-
+    
         formStesso.appendChild(priorityLabel);
         formStesso.appendChild(priorityInput);
 
-        // PRIORITY Input color
-        priorityInput.addEventListener("input", () => { 
-            if ( priorityInput.value == 1 ) {
-                priorityInput.style.accentColor = "#3366FF";
-            }
-            else if ( priorityInput.value == 2 ) {
-                priorityInput.style.accentColor = "#B1CAF6";
-
-            }    
-            else if ( priorityInput.value == 3 ) {
-                priorityInput.style.accentColor = "#FF6666";
-
-            }
-            else if ( priorityInput.value == 4 ) {
-                priorityInput.style.accentColor = "#D7A6A7";
-            }
-            else if ( priorityInput.value == 5 ) {
-                priorityInput.style.accentColor = "#FFF9C6";
-            }
-        });
+        priorityChecker(priorityInput);
     }
     
     priorityForm();
@@ -189,10 +170,6 @@ function addFormDOM(projectNameArray) {
     }
     
     projectNameSelectForm();
-
-    // PROJECTNAME Option loop
-    
-
     
 
     addShowFormButton().addEventListener("click", () => {
@@ -227,6 +204,27 @@ function addFormDOM(projectNameArray) {
     }
 }
 
+// PRIORITY Input color     called in addFormDOM() -> priorityForm()
+function priorityChecker(priorityInput) {
+    priorityInput.addEventListener("input", () => { 
+        if ( priorityInput.value == 1 ) {
+            priorityInput.style.accentColor = "#3366FF";
+        }
+        else if ( priorityInput.value == 2 ) {
+            priorityInput.style.accentColor = "#B1CAF6";
+        }    
+        else if ( priorityInput.value == 3 ) {
+            priorityInput.style.accentColor = "#FF6666";
+        }
+        else if ( priorityInput.value == 4 ) {
+            priorityInput.style.accentColor = "#D7A6A7";
+        }
+        else if ( priorityInput.value == 5 ) {
+            priorityInput.style.accentColor = "#FFF9C6";
+        }
+    });
+}
+
 function getFormValue(ToDo) {
     let ToDoTitle = document.getElementById("title").value;
     let ToDoDescription = document.getElementById("description").value;
@@ -242,4 +240,4 @@ function getFormValue(ToDo) {
 
 addFormDOM(projectNameArray);
 
-export { addFormDOM, getFormValue };
+export { addFormDOM, getFormValue, priorityChecker };

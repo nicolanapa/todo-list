@@ -53,6 +53,7 @@ function defultProject() { //Progetto e ToDo di defualt
     let ToDoDefault = new ToDo("Comprare un materasso", "Andare a comprare il prima possibile un nuovo materasso", 
     "Bianco se si riesce", "2024-01-17", "1", "default");
     console.log(ToDoDefault);
+    console.log(toDoArray[0][1]);
     ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
     "Latte", "2024-02-10", "3", "default");
     //console.log(projectDefault);
