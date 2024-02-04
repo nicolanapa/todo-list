@@ -398,5 +398,6 @@ function showAllProjects() { // Shows all the projects at startup, not at new to
 
 showAllProjects();
 // NOW HAVE TO APPEND NEW TODOS / PROJECTS
+// AND FIX EDITED TODOs BUG (not changing in normal view and only changing once in full view)
 
 export { showDefaultProject, showAllProjects };
