@@ -5,3 +5,10 @@
 
 // NOW HAVE TO APPEND NEW TODOS / PROJECTS
 
+function appendToDo() {
+    
+}
+
+function appendProject() {
+
+}
