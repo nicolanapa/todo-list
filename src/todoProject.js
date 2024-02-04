@@ -14,7 +14,7 @@ class ToDo { //CREA IL TODO E BASTA
         this.projectName = projectName;
 
         contatoreLunghezzaToDo = contatoreLunghezzaToDo + 1;
-        toDoArray[contatoreLunghezzaToDo] = [[title], [description], [notes], [dueDate], [priority], [projectName]];
+        toDoArray[contatoreLunghezzaToDo] = [title, description, notes, dueDate, priority, projectName];
         console.log(toDoArray);
         console.table(toDoArray);
     }
@@ -52,19 +52,27 @@ function defultProject() { //Progetto e ToDo di defualt
     let projectDefault = new Project("default");
     let ToDoDefault = new ToDo("Comprare un materasso", "Andare a comprare il prima possibile un nuovo materasso", 
     "Bianco se si riesce", "2024-01-17", "1", "default");
-    console.log(ToDoDefault);
-    console.log(toDoArray[0][1]);
+    //console.log(ToDoDefault);
+    //console.log(toDoArray[0][1]);
+    ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
+    "Latte", "2024-02-10", "2", "default");
+    ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
+    "Latte", "2024-02-10", "3", "default");
+    ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
+    "Latte", "2024-02-10", "4", "default");
     ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
     "Latte", "2024-02-10", "3", "default");
     //console.log(projectDefault);
-    console.log(ToDoDefault);
+    //console.log(ToDoDefault);
 }
 function testProject1() { //Progetto e ToDo di defualt
     let projectTest1 = new Project("test1");
     let ToDoTest1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
     "Albero normale se si riesce", "2024-12-25", "4", "test1");
+    ToDoTest1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
+    "Albero normale se si riesce", "2024-12-25", "1", "test1");
     //console.log(projectDefault);
-    console.log(ToDoTest1);
+    //console.log(ToDoTest1);
 }
 
 defultProject();

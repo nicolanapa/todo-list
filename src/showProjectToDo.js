@@ -22,6 +22,7 @@ future new "main container")
     not the project where the todo is (for now)
 */
 let mainContainer = document.querySelector(".main-container");
+let finished = 0;
 
 function checkPriority(newToDoContainer, array) {
     if ( toDoArray[array][4] == 1 ) {
@@ -41,36 +42,48 @@ function checkPriority(newToDoContainer, array) {
     }
 }
 
-function showDefaultProject(array) { // Automated code will be based on this
+function showDefaultProject(arrayProject) { // Automated code will be based on this
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);
 
     let newProject = document.createElement("h2");
-    newProject.textContent = projectNameArray[array];
+    newProject.textContent = projectNameArray[arrayProject];
     newProject.setAttribute("class", "projectTitle");
     newProjectContainer.appendChild(newProject);
 
-    let newToDoContainer = document.createElement("div");
-    newToDoContainer.setAttribute("class", "toDoContainer");
-    checkPriority(newToDoContainer, array);
-    newProjectContainer.appendChild(newToDoContainer);
+    function showToDo(array) {
+        let newToDoContainer = document.createElement("div");
+        newToDoContainer.setAttribute("class", "toDoContainer");
+        checkPriority(newToDoContainer, array);
+        newProjectContainer.appendChild(newToDoContainer);
 
-    let titleDueDateContainer = document.createElement("div");
-    titleDueDateContainer.setAttribute("class", "titleDueDateContainer");
-    newToDoContainer.appendChild(titleDueDateContainer);
+        let titleDueDateContainer = document.createElement("div");
+        titleDueDateContainer.setAttribute("class", "titleDueDateContainer");
+        newToDoContainer.appendChild(titleDueDateContainer);
 
-    let newToDoTitle = document.createElement("h5");
-    newToDoTitle.textContent = toDoArray[array][0];
-    newToDoTitle.setAttribute("class", "toDoTitle");
-    titleDueDateContainer.appendChild(newToDoTitle);
+        let newToDoTitle = document.createElement("h5");
+        newToDoTitle.textContent = toDoArray[array][0];
+        newToDoTitle.setAttribute("class", "toDoTitle");
+        titleDueDateContainer.appendChild(newToDoTitle);
 
-    let newToDoDueDate = document.createElement("p");
-    newToDoDueDate.textContent = toDoArray[array][3];
-    newToDoDueDate.setAttribute("class", "toDoDueDate");
-    titleDueDateContainer.appendChild(newToDoDueDate);
+        let newToDoDueDate = document.createElement("p");
+        newToDoDueDate.textContent = toDoArray[array][3];
+        newToDoDueDate.setAttribute("class", "toDoDueDate");
+        titleDueDateContainer.appendChild(newToDoDueDate);
+        allButtons(newToDoContainer, array);
+    }
 
-    allButtons(newToDoContainer, array);
+    for ( let i2 = 0; i2 < toDoArray.length; i2++ ) {
+        if ( projectNameArray[arrayProject] == toDoArray[i2][5] ) {
+            console.log(true);
+            showToDo(i2);
+        }
+        else {
+            console.log(false);
+        }
+    }
+    
 }
 
 function allButtons(newToDoContainer, array) {
@@ -106,7 +119,7 @@ function allButtons(newToDoContainer, array) {
     });
 }
 
-showDefaultProject(0);
+//showDefaultProject(0);
 
 function fullViewToDo(array) { // VIEW BUTTON
     let formToDoContainer = document.querySelector("#form-container");
@@ -338,31 +351,60 @@ function editToDo(array) { // EDIT BUTTON
 
         formToDoStesso.appendChild(submitButton);
 
+        /*function editedToDoChanger2(array) {
+            newToDoTitle.setAttribute("value", toDoArray[array][0]);
+            newToDoDescription.textContent = toDoArray[array][1];
+            newToDoNotes.textContent = toDoArray[array][2];
+            newToDoDueDate.setAttribute("value", toDoArray[array][3]);
+            newToDoPriority.setAttribute("value", toDoArray[array][4]);
+            priorityChecker(newToDoPriority);
+        }*/
+
         submitButton.addEventListener("click", () => {
             getEditValue(array);
+            //editedToDoChanger1(newToDoTitle, newToDoDueDate, array);
+            //editedToDoChanger2(array);
             //projectNameArrayLength();
         });
     }
-
     submitButtonForm();
     dialogToDoContainer.showModal();
 }
 
 function getEditValue(array) { // GET EDIT VALUE
-    toDoArray[array[0]] = String(document.getElementById("toDoTitle").value);
-    toDoArray[array[1]] = String(document.getElementById("toDoDescription").value);
-    toDoArray[array[2]] = String(document.getElementById("toDoNotes").value);
-    toDoArray[array[3]] = String(document.getElementById("toDoDueDate").value);
-    toDoArray[array[4]] = String(document.getElementById("newpriority").value);
-    toDoArray[array[5]] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
+    toDoArray[array][0] = String(document.getElementById("toDoTitle").value);
+    toDoArray[array][1] = String(document.getElementById("toDoDescription").value);
+    toDoArray[array][2] = String(document.getElementById("toDoNotes").value);
+    toDoArray[array][3] = String(document.getElementById("toDoDueDate").value);
+    toDoArray[array][4] = String(document.getElementById("newpriority").value);
+    toDoArray[array][5] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
 
+    console.log(toDoArray[0]);
     console.table(toDoArray);
 }
 
-function showAllProjects() {
+function editedToDoChanger1(newToDoTitle, newToDoDueDate, array) {
+    newToDoTitle.textContent = toDoArray[array][0];
+    newToDoDueDate.textContent = toDoArray[array][3];
+    checkPriority(newToDoContainer, array);
+}
 
+    
+console.log(projectNameArray.length);
+console.log(toDoArray.length);
+
+function showAllProjects() {
+    for ( let i = 0; i < projectNameArray.length; i++ ) {
+        /*for ( let i2 = 0; i2 < toDoArray.length; i2++ ) {
+            if ( projectNameArray[i] == toDoArray[i2][4] ) {
+                showDefaultProject(i2, i);
+            }
+        }*/
+        showDefaultProject(i);
+    }
 }
 
 showAllProjects();
+// NOW HAVE TO APPEND NEW TODOS / PROJECTS
 
 export { showDefaultProject, showAllProjects };
