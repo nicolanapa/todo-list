@@ -22,7 +22,6 @@ future new "main container")
     not the project where the todo is (for now)
 */
 let mainContainer = document.querySelector(".main-container");
-let finished = 0;
 
 function checkPriority(newToDoContainer, array) {
     if ( toDoArray[array][4] == 1 ) {
@@ -42,7 +41,7 @@ function checkPriority(newToDoContainer, array) {
     }
 }
 
-function showDefaultProject(arrayProject) { // Automated code will be based on this
+function showDefaultProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);
@@ -74,14 +73,14 @@ function showDefaultProject(arrayProject) { // Automated code will be based on t
         allButtons(newToDoContainer, array);
     }
 
-    for ( let i2 = 0; i2 < toDoArray.length; i2++ ) {
+    for ( let i2 = 0; i2 < toDoArray.length; i2++ ) { //APPENDS ALL TODOS OF THE SAME PROJECT
         if ( projectNameArray[arrayProject] == toDoArray[i2][5] ) {
-            console.log(true);
+            //console.log(true);
             showToDo(i2);
         }
-        else {
-            console.log(false);
-        }
+        /*else {
+            //console.log(false);
+        }*/
     }
     
 }
@@ -118,8 +117,6 @@ function allButtons(newToDoContainer, array) {
         console.table(toDoArray);
     });
 }
-
-//showDefaultProject(0);
 
 function fullViewToDo(array) { // VIEW BUTTON
     let formToDoContainer = document.querySelector("#form-container");
@@ -393,13 +390,8 @@ function editedToDoChanger1(newToDoTitle, newToDoDueDate, array) {
 console.log(projectNameArray.length);
 console.log(toDoArray.length);
 
-function showAllProjects() {
+function showAllProjects() { // Shows all the projects at startup, not at new todos/projects
     for ( let i = 0; i < projectNameArray.length; i++ ) {
-        /*for ( let i2 = 0; i2 < toDoArray.length; i2++ ) {
-            if ( projectNameArray[i] == toDoArray[i2][4] ) {
-                showDefaultProject(i2, i);
-            }
-        }*/
         showDefaultProject(i);
     }
 }
