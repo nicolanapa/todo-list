@@ -6,7 +6,7 @@
 import { projectNameArray, toDoArray } from "./todoProject";
 import { checkPriority, allButtons } from "./showProjectToDo";
 
-function appendToDo(newToDo, ToDoProjectName) {
+function appendToDo(ToDoProjectName) {
     function showToDo(newProjectContainer, array) {
         let newToDoContainer = document.createElement("div");
         newToDoContainer.setAttribute("class", "toDoContainer");
@@ -42,7 +42,7 @@ function appendToDo(newToDo, ToDoProjectName) {
 
 let mainContainer = document.querySelector(".main-container");
 
-function appendProject(projectName) {
+function appendProject() {
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);

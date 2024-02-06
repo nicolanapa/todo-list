@@ -70,7 +70,7 @@ function getFormProjectValue(Project) {
     console.log(projectNameArray);
     console.log(toDoArray);
     
-    appendProject(projectName);
+    appendProject();
 }
 
 function addProjectOptionFromProject() { // Simile a projectNameArrayOption() ma solo aggiunge un progetto

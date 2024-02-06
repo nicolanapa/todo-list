@@ -233,7 +233,7 @@ function getFormValue(ToDo) {
     let newToDo = new ToDo(ToDoTitle, ToDoDescription, ToDoNotes, ToDoDueDate, ToDoPriority, ToDoProjectName);
     console.log(newToDo);
     
-    appendToDo(newToDo, ToDoProjectName);
+    appendToDo(ToDoProjectName);
 }
 
 addFormDOM(projectNameArray);
