@@ -231,7 +231,7 @@ function editToDo(array) { // EDIT BUTTON
 
     let newToDoDescription = document.createElement("textarea");
     newToDoDescription.textContent = toDoArray[array][1];
-    newToDoDescription.setAttribute("cols", 35);
+    newToDoDescription.setAttribute("cols", 40);
     newToDoDescription.setAttribute("rows", 5);
     newToDoDescription.setAttribute("id", "toDoDescription");
     newToDoDescription.setAttribute("name", "toDoDescription");
@@ -245,7 +245,7 @@ function editToDo(array) { // EDIT BUTTON
 
     let newToDoNotes = document.createElement("textarea");
     newToDoNotes.textContent = toDoArray[array][2];
-    newToDoNotes.setAttribute("cols", 35);
+    newToDoNotes.setAttribute("cols", 40);
     newToDoNotes.setAttribute("rows", 3);
     newToDoNotes.setAttribute("id", "toDoNotes");
     newToDoNotes.setAttribute("name", "toDoNotes");
@@ -352,7 +352,9 @@ function getEditValue(array) { // GET EDIT VALUE
     toDoArray[array][4] = String(document.getElementById("newpriority").value);
     toDoArray[array][5] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
 
-    console.log(toDoArray[0]);
+    console.log(document.getElementById("toDoTitle").value);
+    console.log(array);
+    console.log(toDoArray[array]);
     console.table(toDoArray);
 }
 
