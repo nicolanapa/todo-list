@@ -1,3 +1,4 @@
+import { appendToDo } from "./showNewProjectToDo";
 import { ToDo, Project, projectNameArray, toDoArray } from "./todoProject";
 function dateChecker() { // Creates an variable with today's date
     let todayDate = new Date();
@@ -231,7 +232,8 @@ function getFormValue(ToDo) {
 
     let newToDo = new ToDo(ToDoTitle, ToDoDescription, ToDoNotes, ToDoDueDate, ToDoPriority, ToDoProjectName);
     console.log(newToDo);
-    return newToDo;
+    
+    appendToDo(newToDo, ToDoProjectName);
 }
 
 addFormDOM(projectNameArray);

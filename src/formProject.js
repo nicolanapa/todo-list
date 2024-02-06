@@ -1,3 +1,4 @@
+import { appendProject } from "./showNewProjectToDo";
 import { Project, toDoArray, projectNameArray } from "./todoProject";
 
 function addFormProjectDOM() {
@@ -68,7 +69,8 @@ function getFormProjectValue(Project) {
     console.log(newProject);
     console.log(projectNameArray);
     console.log(toDoArray);
-    return newProject;
+    
+    appendProject(newProject);
 }
 
 function addProjectOptionFromProject() { // Simile a projectNameArrayOption() ma solo aggiunge un progetto

@@ -41,7 +41,7 @@ function checkPriority(newToDoContainer, array) {
     }
 }
 
-function showDefaultProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
+function showProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);
@@ -392,7 +392,7 @@ console.log(toDoArray.length);
 
 function showAllProjects() { // Shows all the projects at startup, not at new todos/projects
     for ( let i = 0; i < projectNameArray.length; i++ ) {
-        showDefaultProject(i);
+        showProject(i);
     }
 }
 
@@ -400,4 +400,4 @@ showAllProjects();
 // NOW HAVE TO APPEND NEW TODOS / PROJECTS -> showNewProjectToDo.js
 // AND FIX EDITED TODOs BUG (not changing in normal view and only changing once in full view)
 
-export { showDefaultProject, showAllProjects };
+export { showProject, showAllProjects, checkPriority, allButtons };
