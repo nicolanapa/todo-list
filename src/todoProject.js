@@ -61,7 +61,7 @@ function defultProject() { //Progetto e ToDo di defualt
     ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
     "Latte", "2024-02-10", "4", "default");
     ToDoDefault = new ToDo("Andare a fare la spesa", "Comprare cibario", 
-    "Latte", "2024-02-10", "3", "default");
+    "Latte", "2024-02-10", "5", "default");
     //console.log(projectDefault);
     //console.log(ToDoDefault);
 }

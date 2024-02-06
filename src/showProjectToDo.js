@@ -2,24 +2,24 @@ import { toDoArray, projectNameArray } from "./todoProject";
 import { priorityChecker } from "./formToDo";
 
 // FIRST Shows the default project
-// SECOND And the other projects (one function about FIRST another about SECOND)
+// SECOND And the other projects (one function about FIRST another about SECOND) not really
 /*  If project == no todos then only show title of project and add some space (padding)
-    for future todos
+    for future todos ✔️
 */
-// When creating new todo, append it to their head project
+// When creating new todo, append it to their head project ✔️
 /* When creating new project, append them to the bottom (appends to a 
-future new "main container")
+future new "main container") no
 */
 
 /*
-    For each todos view only title and duedate
-    Make a little button / click the todo
-    that opens (dialog like in form) the entire todo with an close button
-    Put near the little view button a delete button and a edit details button
+    For each todos view only title and duedate ✔️
+    Make a little button / click the todo 
+    that opens (dialog like in form) the entire todo with an close button✔️
+    Put near the little view button a delete button and a edit details button✔️
     
-    For the edit details button just make it similar to the toDo creating function
+    For the edit details button just make it similar to the toDo creating function✔️
     but only make available changing title, description, notes, priority and duedate
-    not the project where the todo is (for now)
+    not the project where the todo is (for now)✔️1/2
 */
 let mainContainer = document.querySelector(".main-container");
 
@@ -193,7 +193,7 @@ function fullViewToDo(array) { // VIEW BUTTON
     newToDoPriority.setAttribute("placeholder", "1/2/3/4/5");
     newToDoPriority.setAttribute("value", toDoArray[array][4]);
     formToDoStesso.appendChild(newToDoPriority); 
-    document.getElementById("newpriority").disabled = true;
+    newToDoPriority.disabled = true;
 
 
     let progettoNome = document.createElement("div");
@@ -318,7 +318,7 @@ function editToDo(array) { // EDIT BUTTON
         let newToDoProjectName = document.createElement("select");
         newToDoProjectName.setAttribute("id", "toDoProjectName");
         newToDoProjectName.setAttribute("name", "toDoProjectName");
-        newToDoProjectName.setAttribute("disabled", "disabled");
+        newToDoProjectName.setAttribute("disabled", "disabled");//remove when trying to make it work
         formToDoStesso.appendChild(newToDoProjectName);
 
         function projectNameArrayOption() { // CHANGING PROJECT NOT WORKING AS FOR NOW
