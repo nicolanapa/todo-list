@@ -1,8 +1,8 @@
 //NEW FILE SEQUEL/CONNECTED TO showProjectToDo.js
-/*  Has the job of appening new created todos and projects
+/*  
+    Has the job of appening new created todos and projects 
     instead of displaying them once at startup
 */
-// NOW HAVE TO APPEND NEW TODOS / PROJECTS
 import { projectNameArray, toDoArray } from "./todoProject";
 import { checkPriority, allButtons } from "./showProjectToDo";
 
@@ -40,8 +40,17 @@ function appendToDo(newToDo, ToDoProjectName) {
     
 }
 
-function appendProject(newProject) {
+let mainContainer = document.querySelector(".main-container");
 
+function appendProject(projectName) {
+    let newProjectContainer = document.createElement("div");
+    newProjectContainer.setAttribute("class", "projectContainer"); 
+    mainContainer.appendChild(newProjectContainer);
+
+    let newProject = document.createElement("h2");
+    newProject.textContent = projectNameArray[projectNameArray.length - 1];
+    newProject.setAttribute("class", "projectTitle");
+    newProjectContainer.appendChild(newProject);
 }
 
 export { appendToDo, appendProject };

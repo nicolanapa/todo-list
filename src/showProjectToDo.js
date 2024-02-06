@@ -1,26 +1,6 @@
 import { toDoArray, projectNameArray } from "./todoProject";
 import { priorityChecker } from "./formToDo";
 
-// FIRST Shows the default project
-// SECOND And the other projects (one function about FIRST another about SECOND) not really
-/*  If project == no todos then only show title of project and add some space (padding)
-    for future todos ✔️
-*/
-// When creating new todo, append it to their head project ✔️
-/* When creating new project, append them to the bottom (appends to a 
-future new "main container") no
-*/
-
-/*
-    For each todos view only title and duedate ✔️
-    Make a little button / click the todo 
-    that opens (dialog like in form) the entire todo with an close button✔️
-    Put near the little view button a delete button and a edit details button✔️
-    
-    For the edit details button just make it similar to the toDo creating function✔️
-    but only make available changing title, description, notes, priority and duedate
-    not the project where the todo is (for now)✔️1/2
-*/
 let mainContainer = document.querySelector(".main-container");
 
 function checkPriority(newToDoContainer, array) {
@@ -75,12 +55,8 @@ function showProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
 
     for ( let i2 = 0; i2 < toDoArray.length; i2++ ) { //APPENDS ALL TODOS OF THE SAME PROJECT
         if ( projectNameArray[arrayProject] == toDoArray[i2][5] ) {
-            //console.log(true);
             showToDo(i2);
         }
-        /*else {
-            //console.log(false);
-        }*/
     }
     
 }
@@ -386,10 +362,6 @@ function editedToDoChanger1(newToDoTitle, newToDoDueDate, array) {
     checkPriority(newToDoContainer, array);
 }
 
-    
-console.log(projectNameArray.length);
-console.log(toDoArray.length);
-
 function showAllProjects() { // Shows all the projects at startup, not at new todos/projects
     for ( let i = 0; i < projectNameArray.length; i++ ) {
         showProject(i);
@@ -397,7 +369,5 @@ function showAllProjects() { // Shows all the projects at startup, not at new to
 }
 
 showAllProjects();
-// NOW HAVE TO APPEND NEW TODOS / PROJECTS -> showNewProjectToDo.js
-// AND FIX EDITED TODOs BUG (not changing in normal view and only changing once in full view)
 
 export { showProject, showAllProjects, checkPriority, allButtons };

@@ -20,23 +20,6 @@ class ToDo { //CREA IL TODO E BASTA
     }
 }
 
-// NEW REWORK OF classe ToDo
-/*
-Usando toDoArray[] come con projectNameArray[];
-toDoArray[[[], []]]
-[[ToDO1], [ToDo2], ...]
-[[(ToDO1)[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]]]
-
-toDoArray = [
-    [[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]], //RIGA 0
-    [[title 0], [description 1], [notes 2], [dueDate 3], [priority 4], [projectName 5]], //RIGA 1
-];
-
-toDoArray = [ [(toDo)[0], [1], [2], [3], [4], [5]], [...]];
-console.log(toDoArray[0][2]); // RIGA, COLONNA
-Complesso all'inizio ma dovrebbe essere più semplice lavorare con questi dati
-Lo tengo dato che è utile per visualizzare l'array toDoArray*/
-
 let contatoreLunghezzaProject = -1;
 
 class Project { //CREA IL PROGETTO E MANDA IL NOME NELL'ARRAY
@@ -116,4 +99,3 @@ function checkDebug_ToDo_ProjectName_ARRAY() {
 //console.log(projectNameArray);
 
 export { toDoArray, ToDo, Project, projectNameArray };
-// CAMBIARE IN FUTURO I COLORI PRIORITY
