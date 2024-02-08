@@ -26,7 +26,7 @@ function appendToDo(ToDoProjectName) {
         newToDoDueDate.textContent = toDoArray[array][3];
         newToDoDueDate.setAttribute("class", "toDoDueDate");
         titleDueDateContainer.appendChild(newToDoDueDate);
-        allButtons(newToDoContainer, array);
+        allButtons(newToDoTitle, newToDoDueDate, newToDoContainer, array);
     }
     for ( let i = 0; i < projectNameArray.length; i++ ) {
         if ( projectNameArray[i] == ToDoProjectName ) {

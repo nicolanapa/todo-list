@@ -50,7 +50,7 @@ function showProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
         newToDoDueDate.textContent = toDoArray[array][3];
         newToDoDueDate.setAttribute("class", "toDoDueDate");
         titleDueDateContainer.appendChild(newToDoDueDate);
-        allButtons(newToDoContainer, array);
+        allButtons(newToDoTitle, newToDoDueDate, newToDoContainer, array);
     }
 
     for ( let i2 = 0; i2 < toDoArray.length; i2++ ) { //APPENDS ALL TODOS OF THE SAME PROJECT
@@ -61,7 +61,7 @@ function showProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
     
 }
 
-function allButtons(newToDoContainer, array) {
+function allButtons(newToDoTitle, newToDoDueDate, newToDoContainer, array) {
     let viewButton = document.createElement("button");
     viewButton.textContent = "View";
     viewButton.setAttribute("class", "littleButtons");
@@ -83,7 +83,7 @@ function allButtons(newToDoContainer, array) {
     });
 
     editButton.addEventListener("click", () => {
-        editToDo(array);
+        editToDo(newToDoTitle, newToDoDueDate, newToDoContainer, array);
     });
 
     deleteButton.addEventListener("click", () => {
@@ -196,7 +196,7 @@ function fullViewToDo(array) { // VIEW BUTTON
     dialogToDoContainer.showModal();
 }
 
-function editToDo(array) { // EDIT BUTTON
+function editToDo(newToDoTitle, newToDoDueDate, newToDoContainer, array) { // EDIT BUTTON
     let formToDoContainer = document.querySelector("#form-container");
 
     let dialogToDoContainer = document.createElement("dialog");
@@ -215,12 +215,12 @@ function editToDo(array) { // EDIT BUTTON
     titolo.setAttribute("class", "toDoSpecificatore");
     formToDoStesso.appendChild(titolo);
 
-    let newToDoTitle = document.createElement("input");
-    newToDoTitle.setAttribute("value", toDoArray[array][0]);
-    newToDoTitle.setAttribute("id", "toDoTitle");
-    newToDoTitle.setAttribute("name", "toDoTitle");
-    newToDoTitle.style.cssText = "font-size: calc(1rem + 3px);"
-    formToDoStesso.appendChild(newToDoTitle);
+    let newToDoTitleInput = document.createElement("input");
+    newToDoTitleInput.setAttribute("value", toDoArray[array][0]);
+    newToDoTitleInput.setAttribute("id", "toDoTitle");
+    newToDoTitleInput.setAttribute("name", "toDoTitle");
+    newToDoTitleInput.style.cssText = "font-size: calc(1rem + 3px);"
+    formToDoStesso.appendChild(newToDoTitleInput);
 
 
     let descrizione = document.createElement("div");
@@ -229,13 +229,13 @@ function editToDo(array) { // EDIT BUTTON
     formToDoStesso.appendChild(descrizione);
     
 
-    let newToDoDescription = document.createElement("textarea");
-    newToDoDescription.textContent = toDoArray[array][1];
-    newToDoDescription.setAttribute("cols", 40);
-    newToDoDescription.setAttribute("rows", 5);
-    newToDoDescription.setAttribute("id", "toDoDescription");
-    newToDoDescription.setAttribute("name", "toDoDescription");
-    formToDoStesso.appendChild(newToDoDescription);
+    let newToDoDescriptionInput = document.createElement("textarea");
+    newToDoDescriptionInput.textContent = toDoArray[array][1];
+    newToDoDescriptionInput.setAttribute("cols", 40);
+    newToDoDescriptionInput.setAttribute("rows", 5);
+    newToDoDescriptionInput.setAttribute("id", "toDoDescription");
+    newToDoDescriptionInput.setAttribute("name", "toDoDescription");
+    formToDoStesso.appendChild(newToDoDescriptionInput);
 
 
     let note = document.createElement("div");
@@ -243,13 +243,13 @@ function editToDo(array) { // EDIT BUTTON
     note.setAttribute("class", "toDoSpecificatore");
     formToDoStesso.appendChild(note);
 
-    let newToDoNotes = document.createElement("textarea");
-    newToDoNotes.textContent = toDoArray[array][2];
-    newToDoNotes.setAttribute("cols", 40);
-    newToDoNotes.setAttribute("rows", 3);
-    newToDoNotes.setAttribute("id", "toDoNotes");
-    newToDoNotes.setAttribute("name", "toDoNotes");
-    formToDoStesso.appendChild(newToDoNotes);
+    let newToDoNotesInput = document.createElement("textarea");
+    newToDoNotesInput.textContent = toDoArray[array][2];
+    newToDoNotesInput.setAttribute("cols", 40);
+    newToDoNotesInput.setAttribute("rows", 3);
+    newToDoNotesInput.setAttribute("id", "toDoNotes");
+    newToDoNotesInput.setAttribute("name", "toDoNotes");
+    formToDoStesso.appendChild(newToDoNotesInput);
 
 
     let scadenza = document.createElement("div");
@@ -257,15 +257,15 @@ function editToDo(array) { // EDIT BUTTON
     scadenza.setAttribute("class", "toDoSpecificatore");
     formToDoStesso.appendChild(scadenza);
 
-    let newToDoDueDate = document.createElement("input");
-    newToDoDueDate.setAttribute("type", "date");
-    newToDoDueDate.setAttribute("min", "2000-01-01")
-    newToDoDueDate.setAttribute("max", "2099-12-31");
-    newToDoDueDate.setAttribute("value", toDoArray[array][3]);
-    newToDoDueDate.setAttribute("id", "toDoDueDate");
-    newToDoDueDate.setAttribute("name", "toDoDueDate");
-    newToDoDueDate.style.cssText = "font-size: calc(1rem + 1px);"
-    formToDoStesso.appendChild(newToDoDueDate);
+    let newToDoDueDateInput = document.createElement("input");
+    newToDoDueDateInput.setAttribute("type", "date");
+    newToDoDueDateInput.setAttribute("min", "2000-01-01")
+    newToDoDueDateInput.setAttribute("max", "2099-12-31");
+    newToDoDueDateInput.setAttribute("value", toDoArray[array][3]);
+    newToDoDueDateInput.setAttribute("id", "toDoDueDate");
+    newToDoDueDateInput.setAttribute("name", "toDoDueDate");
+    newToDoDueDateInput.style.cssText = "font-size: calc(1rem + 1px);"
+    formToDoStesso.appendChild(newToDoDueDateInput);
 
 
     let priorità = document.createElement("div");
@@ -273,16 +273,16 @@ function editToDo(array) { // EDIT BUTTON
     priorità.setAttribute("class", "toDoSpecificatore");
     formToDoStesso.appendChild(priorità);
 
-    let newToDoPriority = document.createElement("input");
-    newToDoPriority.setAttribute("type", "range");
-    newToDoPriority.setAttribute("min", "1");
-    newToDoPriority.setAttribute("max", "5");
-    newToDoPriority.setAttribute("id", "newpriority");
-    newToDoPriority.setAttribute("name", "newpriority");
-    newToDoPriority.setAttribute("placeholder", "1/2/3/4/5");
-    newToDoPriority.setAttribute("value", toDoArray[array][4]);
-    formToDoStesso.appendChild(newToDoPriority);
-    priorityChecker(newToDoPriority);
+    let newToDoPriorityInput = document.createElement("input");
+    newToDoPriorityInput.setAttribute("type", "range");
+    newToDoPriorityInput.setAttribute("min", "1");
+    newToDoPriorityInput.setAttribute("max", "5");
+    newToDoPriorityInput.setAttribute("id", "newpriority");
+    newToDoPriorityInput.setAttribute("name", "newpriority");
+    newToDoPriorityInput.setAttribute("placeholder", "1/2/3/4/5");
+    newToDoPriorityInput.setAttribute("value", toDoArray[array][4]);
+    formToDoStesso.appendChild(newToDoPriorityInput);
+    priorityChecker(newToDoPriorityInput);
 
     let progettoNome = document.createElement("div");
     progettoNome.textContent = "Project Name (can't change it): ";
@@ -324,20 +324,17 @@ function editToDo(array) { // EDIT BUTTON
 
         formToDoStesso.appendChild(submitButton);
 
-        function editedToDoChanger2(array) {
-            newToDoTitle.setAttribute("value", toDoArray[array][0]);
-            newToDoDescription.textContent = toDoArray[array][1];
-            newToDoNotes.textContent = toDoArray[array][2];
-            newToDoDueDate.setAttribute("value", toDoArray[array][3]);
-            newToDoPriority.setAttribute("value", toDoArray[array][4]);
-            priorityChecker(newToDoPriority);
+        function editedToDoChanger2(newToDoTitle, newToDoDueDate, newToDoContainer, array) {
+            newToDoTitle.textContent = toDoArray[array][0];
+            newToDoDueDate.textContent = toDoArray[array][3];
+            checkPriority(newToDoContainer, array);
         }
 
         submitButton.addEventListener("click", (e) => {
             e.preventDefault();
             console.log('submit button clicked');
             getEditValue(array);
-            editedToDoChanger2(array);
+            editedToDoChanger2(newToDoTitle, newToDoDueDate, newToDoContainer, array);
             dialogToDoContainer.remove();
             //editedToDoChanger1(newToDoTitle, newToDoDueDate, array);
             
@@ -357,7 +354,7 @@ function getEditValue(array) { // GET EDIT VALUE
     toDoArray[array][4] = String(document.getElementById("newpriority").value);
     toDoArray[array][5] = String(document.getElementById("toDoProjectName").value); //SE IN FUTURO PUOI CAMBIARE PROGETTO
 
-    console.log(document.getElementById("toDoTitle").value);
+    console.log(document.getElementById("newpriority").value);
     console.log(array);
     console.log(toDoArray[array]);
     console.table(toDoArray);
