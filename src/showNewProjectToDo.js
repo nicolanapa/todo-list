@@ -1,8 +1,7 @@
-//NEW FILE SEQUEL/CONNECTED TO showProjectToDo.js
-/*  
-    Has the job of appening new created todos and projects 
-    instead of displaying them once at startup
-*/
+//  Has the job of appening new created todos and projects 
+//  instead of displaying them once at startup
+
+
 import { projectNameArray, toDoArray } from "./todoProject";
 import { checkPriority, allButtons } from "./showProjectToDo";
 

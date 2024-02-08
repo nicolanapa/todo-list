@@ -77,8 +77,6 @@ function testProject3() { //Progetto e ToDo di defualt
     "Albero normale se si riesce", "2024-06-02", "2", "test3");
     ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
     "Albero normale se si riesce", "2025-01-08", "2", "test3");
-    //console.log(projectDefault);
-    //console.log(ToDoTest3);
 }
 
 testProject3();

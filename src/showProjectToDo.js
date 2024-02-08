@@ -21,7 +21,7 @@ function checkPriority(newToDoContainer, array) {
     }
 }
 
-function showProject(arrayProject) { // NOW AUTOMATED CODE (only once though)
+function showProject(arrayProject) {
     let newProjectContainer = document.createElement("div");
     newProjectContainer.setAttribute("class", "projectContainer"); 
     mainContainer.appendChild(newProjectContainer);
@@ -336,10 +336,6 @@ function editToDo(newToDoTitle, newToDoDueDate, newToDoContainer, array) { // ED
             getEditValue(array);
             editedToDoChanger2(newToDoTitle, newToDoDueDate, newToDoContainer, array);
             dialogToDoContainer.remove();
-            //editedToDoChanger1(newToDoTitle, newToDoDueDate, array);
-            
-            //projectNameArrayLength();
-            
         });
     }
     submitButtonForm();
@@ -358,12 +354,6 @@ function getEditValue(array) { // GET EDIT VALUE
     console.log(array);
     console.log(toDoArray[array]);
     console.table(toDoArray);
-}
-
-function editedToDoChanger1(newToDoTitle, newToDoDueDate, array) {
-    newToDoTitle.textContent = toDoArray[array][0];
-    newToDoDueDate.textContent = toDoArray[array][3];
-    checkPriority(newToDoContainer, array);
 }
 
 function showAllProjects() { // Shows all the projects at startup, not at new todos/projects
