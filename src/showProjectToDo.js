@@ -324,7 +324,7 @@ function editToDo(newToDoTitle, newToDoDueDate, newToDoContainer, array) { // ED
 
         formToDoStesso.appendChild(submitButton);
 
-        function editedToDoChanger2(newToDoTitle, newToDoDueDate, newToDoContainer, array) {
+        function editedToDoChanger(newToDoTitle, newToDoDueDate, newToDoContainer, array) {
             newToDoTitle.textContent = toDoArray[array][0];
             newToDoDueDate.textContent = toDoArray[array][3];
             checkPriority(newToDoContainer, array);
@@ -334,7 +334,7 @@ function editToDo(newToDoTitle, newToDoDueDate, newToDoContainer, array) { // ED
             e.preventDefault();
             console.log('submit button clicked');
             getEditValue(array);
-            editedToDoChanger2(newToDoTitle, newToDoDueDate, newToDoContainer, array);
+            editedToDoChanger(newToDoTitle, newToDoDueDate, newToDoContainer, array);
             dialogToDoContainer.remove();
         });
     }
