@@ -318,26 +318,31 @@ function editToDo(array) { // EDIT BUTTON
     function submitButtonForm() {
         let submitButton = document.createElement("button");
         submitButton.setAttribute("id", "submitButton");
-        submitButton.setAttribute("type", "submit");
+        submitButton.setAttribute("aria-label", "close");
         submitButton.textContent = "Salva";
         submitButton.style.margin = "25px 0 -10px 0";
 
         formToDoStesso.appendChild(submitButton);
 
-        /*function editedToDoChanger2(array) {
+        function editedToDoChanger2(array) {
             newToDoTitle.setAttribute("value", toDoArray[array][0]);
             newToDoDescription.textContent = toDoArray[array][1];
             newToDoNotes.textContent = toDoArray[array][2];
             newToDoDueDate.setAttribute("value", toDoArray[array][3]);
             newToDoPriority.setAttribute("value", toDoArray[array][4]);
             priorityChecker(newToDoPriority);
-        }*/
+        }
 
-        submitButton.addEventListener("click", () => {
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log('submit button clicked');
             getEditValue(array);
+            editedToDoChanger2(array);
+            dialogToDoContainer.remove();
             //editedToDoChanger1(newToDoTitle, newToDoDueDate, array);
-            //editedToDoChanger2(array);
+            
             //projectNameArrayLength();
+            
         });
     }
     submitButtonForm();
