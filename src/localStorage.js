@@ -9,16 +9,17 @@ if (!localStorage.getItem("project")) {
 }
 
 function populateToDo() {
-    for ( let i = 0; i < toDoArray.length; i++ ) {
-        localStorage.setItem("toDo", JSON.stringify(toDoArray));
-        /*localStorage.setItem("description", JSON.stringify(arrayIndex[1]));
-        localStorage.setItem("notes", JSON.stringify(arrayIndex[2]));
-        localStorage.setItem("dueDate", JSON.stringify(arrayIndex[3]));
-        localStorage.setItem("priority", JSON.stringify(arrayIndex[4]));
-        localStorage.setItem("projectName", JSON.stringify(arrayIndex[5]));*/
-    }
+    localStorage.setItem("toDo", JSON.stringify(toDoArray));
 }
 
 function populateProject() {
     localStorage.setItem("project", JSON.stringify(projectNameArray));
 }
+
+//  JSON.parse(localStorage.getItem("toDo")))[0][1];
+/*
+    Con JSON.stringify() e setItem aggiornare il toDo e project alla creazione/edit di un toDo / project
+    mettendolo nelle funzioni di get"X"Value
+    cambiare le funzioni di display iniziali (showProjectToDo), dai array stessi al JSON.parse(localStorage.getItem("toDo")))[array][1];
+    e sovrascrivere toDo e project alla creazione di nuove cose (formToDo, formProject)
+*/
