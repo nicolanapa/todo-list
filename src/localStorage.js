@@ -22,4 +22,6 @@ function populateProject() {
     mettendolo nelle funzioni di get"X"Value
     cambiare le funzioni di display iniziali (showProjectToDo), dai array stessi al JSON.parse(localStorage.getItem("toDo")))[array][1];
     e sovrascrivere toDo e project alla creazione di nuove cose (formToDo, formProject)
+    o
+    aggiornare toDoArray e projectNameArray con i valori JSON.parse all'avvio e continuare il solito aggiornando anche questi item
 */
