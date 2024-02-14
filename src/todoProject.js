@@ -1,5 +1,13 @@
+import { populateProject, populateToDo, setProjectArray, setToDoArray } from "./localStorage";
+
 let toDoArray = []; //Contenere tutti i ToDo
 let projectNameArray = []; // Contiene tutti i nomi dei progetti
+if (localStorage.getItem("toDo")) {
+    setToDoArray();
+}
+if (localStorage.getItem("project")) {
+    setProjectArray();
+}
 //console.log("Length of projectNameArray is " + projectNameArray.length);
 let contatoreLunghezzaToDo = -1;
 class ToDo { //CREA IL TODO E BASTA
@@ -17,6 +25,8 @@ class ToDo { //CREA IL TODO E BASTA
         toDoArray[contatoreLunghezzaToDo] = [title, description, notes, dueDate, priority, projectName];
         console.log(toDoArray);
         console.table(toDoArray);
+        
+        populateToDo();
     }
 }
 
@@ -27,7 +37,9 @@ class Project { //CREA IL PROGETTO E MANDA IL NOME NELL'ARRAY
         this.projectName = projectName;
 
         contatoreLunghezzaProject = contatoreLunghezzaProject + 1;
-        return projectNameArray[contatoreLunghezzaProject] = projectName;
+        projectNameArray[contatoreLunghezzaProject] = projectName;
+
+        populateProject();
     }
 }
 

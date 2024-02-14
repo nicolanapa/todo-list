@@ -16,6 +16,14 @@ function populateProject() {
     localStorage.setItem("project", JSON.stringify(projectNameArray));
 }
 
+function setToDoArray() {
+    toDoArray = JSON.parse(localStorage.getItem("toDo"));
+}
+
+function setProjectArray() {
+    projectNameArray = JSON.parse(localStorage.getItem("project"));
+}
+
 //  JSON.parse(localStorage.getItem("toDo")))[0][1];
 /*
     Con JSON.stringify() e setItem aggiornare il toDo e project alla creazione/edit di un toDo / project
@@ -25,3 +33,5 @@ function populateProject() {
     o
     aggiornare toDoArray e projectNameArray con i valori JSON.parse all'avvio e continuare il solito aggiornando anche questi item
 */
+
+export { populateToDo, populateProject, setToDoArray, setProjectArray };
