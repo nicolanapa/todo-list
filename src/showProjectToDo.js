@@ -90,6 +90,7 @@ function allButtons(newToDoTitle, newToDoDueDate, newToDoContainer, array) {
         newToDoContainer.remove(); // DELETE BUTTON
         toDoArray[array] = 0 //FARE FUNZIONE CHE RIAGGIORNA L'ARRAY IN FUTURO
         //console.log(toDoArray[array]);
+        populateToDo();
         console.table(toDoArray);
     });
 }
