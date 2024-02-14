@@ -1,4 +1,4 @@
-import { toDoArray, projectNameArray } from "./todoProject";
+import { toDoArray, projectNameArray, populateToDo } from "./todoProject";
 import { priorityChecker } from "./formToDo";
 
 let mainContainer = document.querySelector(".main-container");
@@ -354,6 +354,8 @@ function getEditValue(array) { // GET EDIT VALUE
     console.log(array);
     console.log(toDoArray[array]);
     console.table(toDoArray);
+
+    populateToDo();
 }
 
 function showAllProjects() { // Shows all the projects at startup, not at new todos/projects

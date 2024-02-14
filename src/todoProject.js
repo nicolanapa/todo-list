@@ -1,13 +1,22 @@
-import { populateProject, populateToDo, setProjectArray, setToDoArray } from "./localStorage";
-
 let toDoArray = []; //Contenere tutti i ToDo
 let projectNameArray = []; // Contiene tutti i nomi dei progetti
-if (localStorage.getItem("toDo")) {
-    setToDoArray();
+
+function populateToDo() {
+    localStorage.setItem("toDo", JSON.stringify(toDoArray));
 }
-if (localStorage.getItem("project")) {
-    setProjectArray();
+
+function populateProject() {
+    localStorage.setItem("project", JSON.stringify(projectNameArray));
 }
+
+function setToDoArray() {
+    toDoArray = JSON.parse(localStorage.getItem("toDo"));
+}
+
+function setProjectArray() {
+    projectNameArray = JSON.parse(localStorage.getItem("project"));
+}
+
 //console.log("Length of projectNameArray is " + projectNameArray.length);
 let contatoreLunghezzaToDo = -1;
 class ToDo { //CREA IL TODO E BASTA
@@ -23,7 +32,7 @@ class ToDo { //CREA IL TODO E BASTA
 
         contatoreLunghezzaToDo = contatoreLunghezzaToDo + 1;
         toDoArray[contatoreLunghezzaToDo] = [title, description, notes, dueDate, priority, projectName];
-        console.log(toDoArray);
+        //console.log(toDoArray);
         console.table(toDoArray);
         
         populateToDo();
@@ -43,6 +52,19 @@ class Project { //CREA IL PROGETTO E MANDA IL NOME NELL'ARRAY
     }
 }
 
+if (!localStorage.getItem("toDo") && !localStorage.getItem("project")) {
+    contatoreLunghezzaProject = -1;
+    defultProject();
+    contatoreLunghezzaProject = 0;
+    populateToDo();
+    populateProject();
+}
+
+else {
+    setToDoArray();
+    setProjectArray();
+}
+
 function defultProject() { //Progetto e ToDo di defualt
     let projectDefault = new Project("default");
     let ToDoDefault = new ToDo("Comprare un materasso", "Andare a comprare il prima possibile un nuovo materasso", 
@@ -60,38 +82,6 @@ function defultProject() { //Progetto e ToDo di defualt
     //console.log(projectDefault);
     //console.log(ToDoDefault);
 }
-function testProject1() { //Progetto e ToDo di defualt
-    let projectTest1 = new Project("test1");
-    let ToDoTest1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-12-25", "4", "test1");
-    ToDoTest1 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-12-25", "1", "test1");
-    //console.log(projectDefault);
-    //console.log(ToDoTest1);
-}
-
-defultProject();
-testProject1();
-
-let projectTest2 = new Project("test2");
-
-function testProject3() { //Progetto e ToDo di defualt
-    let projectTest3 = new Project("test3");
-    let ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2025-05-15", "4", "test3");
-    ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-06-20", "1", "test3");
-    ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-12-17", "3", "test3");
-    ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-05-30", "5", "test3");
-    ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2024-06-02", "2", "test3");
-    ToDoTest3 = new ToDo("Prendersi un albero", "Regalo di natale per se stessi", 
-    "Albero normale se si riesce", "2025-01-08", "2", "test3");
-}
-
-testProject3();
 
 //console.log("Length of projectNameArray is " + projectNameArray.length);
 
@@ -108,4 +98,4 @@ function checkDebug_ToDo_ProjectName_ARRAY() {
 //console.log("projectNameArray ARRAY " + projectNameArray);
 //console.log(projectNameArray);
 
-export { toDoArray, ToDo, Project, projectNameArray };
+export { toDoArray, ToDo, Project, projectNameArray, populateToDo, populateProject };
