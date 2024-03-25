@@ -1,84 +1,100 @@
 import { appendProject } from "./showNewProjectToDo";
-import { Project, toDoArray, projectNameArray } from "./todoProject";
+import { Project, toDoArray, projectNameArray, resetToDoArray } from "./todoProject";
 
 function addFormProjectDOM() {
-    // POPUP
-    let formContainer = document.querySelector("#form-container");
+	// POPUP
+	let formContainer = document.querySelector("#form-container");
 
-    let dialogFormProjectContainer = document.createElement("dialog");
-    dialogFormProjectContainer.setAttribute("id", "dialog-form-project");
-    let formProjectStesso = document.createElement("form");
-    formProjectStesso.setAttribute("method", "dialog");
-    formProjectStesso.setAttribute("action", "#");
-    formContainer.appendChild(dialogFormProjectContainer);
-    dialogFormProjectContainer.appendChild(formProjectStesso);
+	let dialogFormProjectContainer = document.createElement("dialog");
+	dialogFormProjectContainer.setAttribute("id", "dialog-form-project");
+	let formProjectStesso = document.createElement("form");
+	formProjectStesso.setAttribute("method", "dialog");
+	formProjectStesso.setAttribute("action", "#");
+	formContainer.appendChild(dialogFormProjectContainer);
+	dialogFormProjectContainer.appendChild(formProjectStesso);
 
-    // PROJECTNAME Creation
-    function projectNameForm() {
-        let projectNameLabel = document.createElement("label");
-        projectNameLabel.textContent = "Crea il tuo nuovo progetto: ";
-        let projectNameSelect = document.createElement("input");
-        projectNameLabel.setAttribute("for", "projectNameProject");
-        projectNameSelect.setAttribute("id", "projectNameProject");
-        projectNameSelect.setAttribute("name", "projectNameProject");
+	// PROJECTNAME Creation
+	function projectNameForm() {
+		let projectNameLabel = document.createElement("label");
+		projectNameLabel.textContent = "Crea il tuo nuovo progetto: ";
+		let projectNameSelect = document.createElement("input");
+		projectNameLabel.setAttribute("for", "projectNameProject");
+		projectNameSelect.setAttribute("id", "projectNameProject");
+		projectNameSelect.setAttribute("name", "projectNameProject");
 
-        formProjectStesso.appendChild(projectNameLabel);
-        formProjectStesso.appendChild(projectNameSelect);
-    }
-    
-    projectNameForm();
+		formProjectStesso.appendChild(projectNameLabel);
+		formProjectStesso.appendChild(projectNameSelect);
+	}
 
-    // Submit Button
-    function submitButtonForm() {
-        let submitButton = document.createElement("button");
-        submitButton.setAttribute("id", "submitButton");
-        submitButton.setAttribute("type", "submit");
-        submitButton.textContent = "Salva";
+	projectNameForm();
 
-        formProjectStesso.appendChild(submitButton);
+	// Submit Button
+	function submitButtonForm() {
+		let submitButton = document.createElement("button");
+		submitButton.setAttribute("id", "submitButton");
+		submitButton.setAttribute("type", "submit");
+		submitButton.textContent = "Salva";
 
-        // Get all form values by calling getFormValue()
-        submitButton.addEventListener("click", () => {
-            getFormProjectValue(Project);
-        });
-    }
-    
-    submitButtonForm();
+		formProjectStesso.appendChild(submitButton);
 
-    function addShowFormProjectButton() {
-        let formContainer = document.querySelector("#form-container");
-        let formShowProjectButton = document.createElement("button");
-        formShowProjectButton.textContent = "Crea un nuovo Progetto";
-        formShowProjectButton.setAttribute("id", "formShowButton");
-        formContainer.appendChild(formShowProjectButton);
-        return formShowProjectButton;
-    }
+		// Get all form values by calling getFormValue()
+		submitButton.addEventListener("click", () => {
+			getFormProjectValue(Project);
+		});
+	}
 
-    // Shows the form after clicking the form button
-    addShowFormProjectButton().addEventListener("click", () => {
-        dialogFormProjectContainer.showModal();
-    });
+	submitButtonForm();
+
+	function addShowFormProjectButton() {
+		let formContainer = document.querySelector("#form-container");
+		let formShowProjectButton = document.createElement("button");
+		formShowProjectButton.textContent = "Crea un nuovo Progetto";
+		formShowProjectButton.setAttribute("id", "formShowButton");
+		formContainer.appendChild(formShowProjectButton);
+		return formShowProjectButton;
+	}
+
+	// Shows the form after clicking the form button
+	addShowFormProjectButton().addEventListener("click", () => {
+		dialogFormProjectContainer.showModal();
+	});
+
+	// Shows the reset all button
+	function addResetButton() {
+		let formContainer = document.querySelector("#form-container");
+		let formResetButton = document.createElement("button");
+		formResetButton.textContent = "Cancella tutti i ToDo/Progetti";
+		formResetButton.setAttribute("id", "formResetButton");
+		formContainer.appendChild(formResetButton);
+
+		formResetButton.addEventListener("click", () => {
+			resetToDoArray();
+		});
+	}
+
+	addResetButton();
 }
 
 function getFormProjectValue(Project) {
-    let projectName = document.getElementById("projectNameProject").value;
-    let newProject = new Project(projectName);
+	let projectName = document.getElementById("projectNameProject").value;
+	let newProject = new Project(projectName);
 
-    addProjectOptionFromProject();
-    
-    console.log(newProject);
-    console.log(projectNameArray);
-    console.log(toDoArray);
-    
-    appendProject();
+	addProjectOptionFromProject();
+
+	console.log(newProject);
+	console.log(projectNameArray);
+	console.log(toDoArray);
+
+	appendProject();
 }
 
-function addProjectOptionFromProject() { // Simile a projectNameArrayOption() ma solo aggiunge un progetto
-    let projectNameSelect2 = document.querySelector("#projectName");
-    let projectNameOption2 = document.createElement("option");
-    projectNameOption2.setAttribute("value", projectNameArray[projectNameArray.length - 1]);
-    projectNameOption2.textContent = projectNameArray[projectNameArray.length - 1];
-    projectNameSelect2.appendChild(projectNameOption2);
+function addProjectOptionFromProject() {
+	// Simile a projectNameArrayOption() ma solo aggiunge un progetto
+	let projectNameSelect2 = document.querySelector("#projectName");
+	let projectNameOption2 = document.createElement("option");
+	projectNameOption2.setAttribute("value", projectNameArray[projectNameArray.length - 1]);
+	projectNameOption2.textContent = projectNameArray[projectNameArray.length - 1];
+	projectNameSelect2.appendChild(projectNameOption2);
 }
 
 addFormProjectDOM();

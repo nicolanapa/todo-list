@@ -1,151 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap");
 
 * {
-    font-family: "Roboto Flex", roboto, system-ui;
-    padding: 0;
-    margin: 0;
+	font-family: "Roboto Flex", roboto, system-ui;
+	padding: 0;
+	margin: 0;
 }
 
 #dialog-form,
 #dialog-form-project {
-    margin: 10px 20% 10px 20%;
-    padding: 5px;
-    width: max(60%, 40%, 20%);
-    border-style: none;
-    border-radius: 20px;
+	margin: 10px 20% 10px 20%;
+	padding: 5px;
+	width: max(60%, 40%, 20%);
+	border-style: none;
+	border-radius: 20px;
 }
 
 #dialog-form > form {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 label {
-    margin: 10px 10px;
+	margin: 10px 10px;
 }
 
 input {
-    padding: 15px 15px;
-    margin: 5px 10px 15px 10px;
-    border-radius: 20px;
-    border: 1px solid black;
+	padding: 15px 15px;
+	margin: 5px 10px 15px 10px;
+	border-radius: 20px;
+	border: 1px solid black;
 }
 
 input[type="range"] {
-    padding: 0px 5px;
-    margin-top: 0px;
-    border-style: none;
+	padding: 0px 5px;
+	margin-top: 0px;
+	border-style: none;
 }
 
 #projectName {
-    margin: 0 20px 10px 20px;
-    padding: 10px 10px;
-    text-align: center;
-    border-style: none;
-    border-radius: 20px;
-    width: calc(20% + 10px);
+	margin: 0 20px 10px 20px;
+	padding: 10px 10px;
+	text-align: center;
+	border-style: none;
+	border-radius: 20px;
+	width: calc(20% + 10px);
 }
 
 #formShowButton,
+#formResetButton,
 #submitButton,
 #toDoProjectName {
-    padding: 15px 30px;
-    margin: 10px;
-    border-style: none;
-    border-radius: 20px;
-    font-weight: 700;
+	padding: 15px 30px;
+	margin: 10px;
+	border-style: none;
+	border-radius: 20px;
+	font-weight: 700;
 }
 
 #formShowButton {
-    position: sticky;
-    top: -15px;
+	position: sticky;
+	top: -15px;
 }
 
 #submitButton {
-    width: 150px;
-    align-self: center;
+	width: 150px;
+	align-self: center;
 }
 
 .projectContainer {
-    padding: 15px 25px 25px 25px;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
+	padding: 15px 25px 25px 25px;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
 }
 
 .toDoContainer {
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 15px 20px 20px 20px;
-    width: calc(20% + 170px);
+	border-radius: 20px;
+	margin-top: 10px;
+	padding: 15px 20px 20px 20px;
+	width: calc(20% + 170px);
 }
 
 .titleDueDateContainer {
-    display: flex;
+	display: flex;
 }
 
 .projectTitle {
-    font-weight: 850;
+	font-weight: 850;
 }
 
 .toDoTitle {
-    font-style: italic;
-    font-size: calc(1rem + 0.5px);
-    padding: 0 10px 0 0;
+	font-style: italic;
+	font-size: calc(1rem + 0.5px);
+	padding: 0 10px 0 0;
 }
 
 .toDoDueDate {
-    font-size: calc(1rem - 4px);
-    margin: -2px;
+	font-size: calc(1rem - 4px);
+	margin: -2px;
 }
 
 .littleButtons {
-    background-color: rgb(234, 234, 234);
-    font-size: calc(1rem - 2px);
-    padding: 5px 10px;
-    margin: 15px 10px 0 -5px;
-    border-style: none;
-    border-radius: 20px;
-    color: black;
+	background-color: rgb(234, 234, 234);
+	font-size: calc(1rem - 2px);
+	padding: 5px 10px;
+	margin: 15px 10px 0 -5px;
+	border-style: none;
+	border-radius: 20px;
+	color: black;
 }
 
 .littleButtons:active {
-    background-color: rgb(186, 186, 186);
-    color: rgb(28, 25, 25);
+	background-color: rgb(186, 186, 186);
+	color: rgb(28, 25, 25);
 }
 
 .toDoFullView {
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-    border-radius: 30px;
+	padding: 20px;
+	margin: 10px;
+	text-align: center;
+	border-radius: 30px;
 }
 
 .toDoDescription {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .toDoNotes {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .toDoProjectName,
 #toDoProjectName {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .toDoSpecificatore {
-    text-align: left;
-    font-size: calc(1rem + 1px);
-    font-style: italic;
-    margin: 20px 0 0 0;
-    padding: 15px;
+	text-align: left;
+	font-size: calc(1rem + 1px);
+	font-style: italic;
+	margin: 20px 0 0 0;
+	padding: 15px;
 }
 
 .toDoSpecificatore:nth-child(1) {
-    margin-top: -20px;
+	margin-top: -20px;
 }
 
 #toDoProjectName {
-    display: flex;
-    padding: 8px 20px;
+	display: flex;
+	padding: 8px 20px;
 }
